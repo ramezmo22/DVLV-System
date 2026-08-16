@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/changes/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="DVLV.BLL/DVLV.BLL.csproj" />
+  <Project Path="DVLV.DAL/DVLV.DAL.csproj" />
+  <Project Path="DVLV.Presentation/DVLV.UI.csproj" />
+</Solution>

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+	<NoWarn>CS8600;CS8603;CS0168;CS8602;CS8604</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.4" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.11" />
+  </ItemGroup>
+
+</Project>
