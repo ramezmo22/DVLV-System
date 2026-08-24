@@ -148,7 +148,7 @@ namespace DVLV.UI.Tests_Manage
                     driving_License_Application_Info1.LoudControlData(LocalDrivingLicenseApplicationID, Driving_License_Application_Info.enLicenseType.enLocal);
 
                 }
-                else 
+                else
                 {
                     MessageBox.Show("The person Has taken this exam and it is locked . ", "Not Allowed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

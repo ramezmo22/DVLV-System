@@ -35,7 +35,7 @@ namespace DVLV.UI.Detains
                 string Title = "";
                 int Fees = 0;
                 BLL.ApplicationTypesBLL.GetType(ref ApplicationTypeID, ref Title, ref Fees);
-                this._application_Fees= Fees;
+                this._application_Fees = Fees;
                 int TotalFees = Fees + FineFees;
                 lbl_Application_Fees.Text = Fees.ToString();
                 lbl_Total_Fees.Text = TotalFees.ToString();

@@ -16,7 +16,7 @@ namespace DVLV.UI.Licenses
         protected virtual void LicenseSelected(int LicenseID)
         {
             Action<int> handeller = OnLicenseSelected;
-            if(handeller!=null )
+            if (handeller != null)
             {
                 handeller(LicenseID);
             }
@@ -66,7 +66,7 @@ namespace DVLV.UI.Licenses
                 }
             }
 
-        
-    }
+
+        }
     }
 }

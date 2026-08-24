@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI
 {
     partial class Person_Finder_Filter
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -59,7 +61,7 @@
             // 
             // button2
             // 
-            button2.BackgroundImage = Properties.Resources.AddPerson_32;
+            button2.BackgroundImage = Resources.AddPerson_32;
             button2.BackgroundImageLayout = ImageLayout.Zoom;
             button2.Location = new Point(505, 20);
             button2.Name = "button2";
@@ -70,7 +72,7 @@
             // 
             // button1
             // 
-            button1.BackgroundImage = Properties.Resources.SearchPerson;
+            button1.BackgroundImage = Resources.SearchPerson;
             button1.BackgroundImageLayout = ImageLayout.Zoom;
             button1.Location = new Point(467, 20);
             button1.Name = "button1";

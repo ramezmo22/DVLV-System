@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
 {
     partial class List_International_License_Applications
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -56,7 +58,7 @@
             // btn_Close
             // 
             btn_Close.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(1137, 663);
             btn_Close.Name = "btn_Close";
@@ -68,7 +70,7 @@
             // 
             // btn_AddNewApplication
             // 
-            btn_AddNewApplication.Image = Properties.Resources.New_Application_64;
+            btn_AddNewApplication.Image = Resources.New_Application_64;
             btn_AddNewApplication.Location = new Point(1180, 222);
             btn_AddNewApplication.Name = "btn_AddNewApplication";
             btn_AddNewApplication.Size = new Size(76, 80);
@@ -149,7 +151,7 @@
             // 
             // showPersonDetailsToolStripMenuItem
             // 
-            showPersonDetailsToolStripMenuItem.Image = Properties.Resources.PersonDetails_32;
+            showPersonDetailsToolStripMenuItem.Image = Resources.PersonDetails_32;
             showPersonDetailsToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             showPersonDetailsToolStripMenuItem.Name = "showPersonDetailsToolStripMenuItem";
             showPersonDetailsToolStripMenuItem.Size = new Size(241, 38);
@@ -158,7 +160,7 @@
             // 
             // showLicenseDetailsToolStripMenuItem
             // 
-            showLicenseDetailsToolStripMenuItem.Image = Properties.Resources.License_View_32;
+            showLicenseDetailsToolStripMenuItem.Image = Resources.License_View_32;
             showLicenseDetailsToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             showLicenseDetailsToolStripMenuItem.Name = "showLicenseDetailsToolStripMenuItem";
             showLicenseDetailsToolStripMenuItem.Size = new Size(241, 38);
@@ -167,7 +169,7 @@
             // 
             // showPersonLicenseHistoryToolStripMenuItem
             // 
-            showPersonLicenseHistoryToolStripMenuItem.Image = Properties.Resources.PersonLicenseHistory_321;
+            showPersonLicenseHistoryToolStripMenuItem.Image = Resources.PersonLicenseHistory_321;
             showPersonLicenseHistoryToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             showPersonLicenseHistoryToolStripMenuItem.Name = "showPersonLicenseHistoryToolStripMenuItem";
             showPersonLicenseHistoryToolStripMenuItem.RightToLeftAutoMirrorImage = true;
@@ -177,7 +179,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.International_32;
+            pictureBox2.Image = Resources.International_32;
             pictureBox2.Location = new Point(586, 147);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(34, 26);
@@ -187,7 +189,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Applications;
+            pictureBox1.Image = Resources.Applications;
             pictureBox1.Location = new Point(524, 10);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(235, 189);

@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI
 {
     partial class Update_Application_Type
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -89,7 +91,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.ApplicationTitle;
+            pictureBox1.Image = Resources.ApplicationTitle;
             pictureBox1.Location = new Point(108, 133);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(32, 32);
@@ -99,7 +101,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.money_32;
+            pictureBox2.Image = Resources.money_32;
             pictureBox2.Location = new Point(108, 180);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(32, 32);
@@ -131,7 +133,7 @@
             // btn_Save
             // 
             btn_Save.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            btn_Save.Image = Properties.Resources.Save_32;
+            btn_Save.Image = Resources.Save_32;
             btn_Save.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Save.Location = new Point(324, 226);
             btn_Save.Name = "btn_Save";
@@ -144,7 +146,7 @@
             // btn_Close
             // 
             btn_Close.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(205, 226);
             btn_Close.Name = "btn_Close";

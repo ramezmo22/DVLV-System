@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Tests_Manage
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Tests_Manage
 {
     partial class Written_Test_Appointments
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -47,7 +49,7 @@
             // 
             // btn_Add_Appointment
             // 
-            btn_Add_Appointment.Image = Properties.Resources.AddAppointment_32;
+            btn_Add_Appointment.Image = Resources.AddAppointment_32;
             btn_Add_Appointment.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Add_Appointment.Location = new Point(776, 477);
             btn_Add_Appointment.Name = "btn_Add_Appointment";
@@ -58,7 +60,7 @@
             // 
             // button1
             // 
-            button1.Image = Properties.Resources.Close_32;
+            button1.Image = Resources.Close_32;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
             button1.Location = new Point(700, 718);
             button1.Name = "button1";
@@ -91,7 +93,7 @@
             // 
             // editToolStripMenuItem
             // 
-            editToolStripMenuItem.Image = Properties.Resources.edit_32;
+            editToolStripMenuItem.Image = Resources.edit_32;
             editToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new Size(138, 38);
@@ -100,7 +102,7 @@
             // 
             // takeTestToolStripMenuItem
             // 
-            takeTestToolStripMenuItem.Image = Properties.Resources.Test_32;
+            takeTestToolStripMenuItem.Image = Resources.Test_32;
             takeTestToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             takeTestToolStripMenuItem.Name = "takeTestToolStripMenuItem";
             takeTestToolStripMenuItem.Size = new Size(138, 38);
@@ -126,7 +128,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Written_Test_512;
+            pictureBox1.Image = Resources.Written_Test_512;
             pictureBox1.Location = new Point(347, 6);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(130, 76);

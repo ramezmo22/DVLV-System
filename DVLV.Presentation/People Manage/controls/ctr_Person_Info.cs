@@ -1,13 +1,14 @@
-﻿using System;
+﻿using DVLV.BLL;
+using DVLV.UI;
+using DVLV.UI.Properties;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DVLV.BLL;
-using DVLV.UI.Properties;
-using Microsoft.IdentityModel.Tokens;
 namespace DVLV.UI
 {
     public partial class ctr_Person_Info : UserControl
@@ -24,7 +25,7 @@ namespace DVLV.UI
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmAddNewPerson EditPerson = new frmAddNewPerson( _PersonID);
+            frmAddNewPerson EditPerson = new frmAddNewPerson(_PersonID);
             EditPerson.ShowDialog();
             LoadData();
         }
@@ -39,7 +40,7 @@ namespace DVLV.UI
             else
             {
                 MessageBox.Show("Person not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               // this.FindForm()?.Close();
+                // this.FindForm()?.Close();
             }
         }
         private void LoadData()
@@ -87,6 +88,6 @@ namespace DVLV.UI
             }
         }
 
-        
+
     }
 }

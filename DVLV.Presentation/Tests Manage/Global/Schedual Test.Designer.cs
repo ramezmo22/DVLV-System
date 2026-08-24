@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Tests_Manage
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Tests_Manage
 {
     partial class Schedule_Test
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -36,7 +38,7 @@
             // 
             // btn_Close
             // 
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(167, 610);
             btn_Close.Name = "btn_Close";

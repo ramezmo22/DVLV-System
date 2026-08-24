@@ -1,13 +1,13 @@
-﻿using System;
+﻿using DVLV.BLL;
+using DVLV.Presentation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using DVLV.BLL;
-using DVLV.Presentation;
-using System.IO;
 namespace DVLV.UI
 {
     public partial class LoginScreen : Form
@@ -15,7 +15,7 @@ namespace DVLV.UI
         public LoginScreen()
         {
             InitializeComponent();
-            
+
             LoudUsernamePassword();
         }
         private void LoudUsernamePassword()
@@ -64,18 +64,18 @@ namespace DVLV.UI
         {
             if (cb_RememberMe.Checked)
             {
-                if(string.IsNullOrWhiteSpace(txt_UserName.Text) || string.IsNullOrWhiteSpace(txt_Password.Text))//To check if credentials are not provided
+                if (string.IsNullOrWhiteSpace(txt_UserName.Text) || string.IsNullOrWhiteSpace(txt_Password.Text))//To check if credentials are not provided
                 {
                     MessageBox.Show("Please enter both username and password to remember.");
                     cb_RememberMe.Checked = false; // Uncheck the box if credentials are not provided
                     return;
                 }
                 else
-                File.WriteAllText("rememberme.txt", $"{txt_UserName.Text.Trim()}\n{txt_Password.Text.Trim()}");
+                    File.WriteAllText("rememberme.txt", $"{txt_UserName.Text.Trim()}\n{txt_Password.Text.Trim()}");
             }
-            if(!cb_RememberMe.Checked)
+            if (!cb_RememberMe.Checked)
             {
-                if(File.Exists("rememberme.txt"))
+                if (File.Exists("rememberme.txt"))
                 {
                     File.Delete("rememberme.txt");
                 }

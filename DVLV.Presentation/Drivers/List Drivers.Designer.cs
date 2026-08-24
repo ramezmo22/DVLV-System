@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Drivers
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Drivers
 {
     partial class List_Drivers
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -94,7 +96,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Driver_Main;
+            pictureBox1.Image = Resources.Driver_Main;
             pictureBox1.Location = new Point(370, -1);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(293, 215);
@@ -104,7 +106,7 @@
             // 
             // button1
             // 
-            button1.Image = Properties.Resources.Close_32;
+            button1.Image = Resources.Close_32;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
             button1.Location = new Point(914, 668);
             button1.Name = "button1";

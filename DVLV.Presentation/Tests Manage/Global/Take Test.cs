@@ -32,13 +32,13 @@ namespace DVLV.UI.Tests_Manage
 
             ctr_Written_Test1.Visible = false;
             ctr_Street_Test1.Visible = false;
-            ctr_Vision_Test1.Visible = false; 
+            ctr_Vision_Test1.Visible = false;
             switch (Type)
             {
                 case enTestType.enVisionTest:
                     {
                         ctr_Vision_Test1.LoadData(LocalDrivingApplicationID, ctr_Vision_Test.enMood.enTestCardShow, TestAppointmentID);
-                        ctr_Vision_Test1.Visible = true;  
+                        ctr_Vision_Test1.Visible = true;
 
                         break;
                     }
@@ -67,7 +67,7 @@ namespace DVLV.UI.Tests_Manage
             bool result = rdb_Pass.Checked;
             string Notes = txt_Notes.Text;
 
-            if(MessageBox.Show("Are you sure you want to save ? After this you cannot change the  Pass/Fail results After You Save?.","Conform",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning)==DialogResult.OK)
+            if (MessageBox.Show("Are you sure you want to save ? After this you cannot change the  Pass/Fail results After You Save?.", "Conform", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 int TestID = TestsBLL.AddTest(TestAppointmentID, result, Notes);
                 if (BLL.TestAppointmentsBLL.UpdateLockStutus(TestAppointmentID, true))
@@ -86,7 +86,7 @@ namespace DVLV.UI.Tests_Manage
                 return;
             }
 
-            
+
 
 
 

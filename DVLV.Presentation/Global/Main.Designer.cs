@@ -1,4 +1,5 @@
-﻿namespace DVLV.Presentation
+﻿using DVLV.UI.Properties;
+namespace DVLV.Presentation
 {
     partial class Main
     {
@@ -8,9 +9,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -28,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            System.ComponentModel.ComponentResourceManager Resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             menuStrip1 = new MenuStrip();
             applicationToolStripMenuItem = new ToolStripMenuItem();
             drivingLicensesServicesToolStripMenuItem = new ToolStripMenuItem();
@@ -80,7 +81,7 @@
             applicationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { drivingLicensesServicesToolStripMenuItem, manageToolStripMenuItem, detainLicensesToolStripMenuItem, toolStripSeparator1, manageApplicationTypesToolStripMenuItem, toolStripSeparator2, manageToolStripMenuItem1 });
             applicationToolStripMenuItem.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             applicationToolStripMenuItem.ForeColor = Color.DimGray;
-            applicationToolStripMenuItem.Image = (Image)resources.GetObject("applicationToolStripMenuItem.Image");
+            applicationToolStripMenuItem.Image = (Image)Resources.GetObject("applicationToolStripMenuItem.Image");
             applicationToolStripMenuItem.ImageAlign = ContentAlignment.MiddleLeft;
             applicationToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             applicationToolStripMenuItem.ImageTransparentColor = Color.FromArgb(192, 255, 192);
@@ -254,7 +255,7 @@
             peopleToolStripMenuItem.BackColor = Color.White;
             peopleToolStripMenuItem.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             peopleToolStripMenuItem.ForeColor = Color.DimGray;
-            peopleToolStripMenuItem.Image = (Image)resources.GetObject("peopleToolStripMenuItem.Image");
+            peopleToolStripMenuItem.Image = (Image)Resources.GetObject("peopleToolStripMenuItem.Image");
             peopleToolStripMenuItem.ImageAlign = ContentAlignment.MiddleLeft;
             peopleToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             peopleToolStripMenuItem.ImageTransparentColor = Color.Transparent;
@@ -269,7 +270,7 @@
             driversToolStripMenuItem.BackColor = Color.White;
             driversToolStripMenuItem.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             driversToolStripMenuItem.ForeColor = Color.DimGray;
-            driversToolStripMenuItem.Image = (Image)resources.GetObject("driversToolStripMenuItem.Image");
+            driversToolStripMenuItem.Image = (Image)Resources.GetObject("driversToolStripMenuItem.Image");
             driversToolStripMenuItem.ImageAlign = ContentAlignment.MiddleLeft;
             driversToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             driversToolStripMenuItem.ImageTransparentColor = Color.Transparent;
@@ -284,7 +285,7 @@
             usersToolStripMenuItem.BackColor = Color.White;
             usersToolStripMenuItem.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             usersToolStripMenuItem.ForeColor = Color.DimGray;
-            usersToolStripMenuItem.Image = (Image)resources.GetObject("usersToolStripMenuItem.Image");
+            usersToolStripMenuItem.Image = (Image)Resources.GetObject("usersToolStripMenuItem.Image");
             usersToolStripMenuItem.ImageAlign = ContentAlignment.MiddleLeft;
             usersToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             usersToolStripMenuItem.ImageTransparentColor = Color.Transparent;
@@ -300,7 +301,7 @@
             accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { currentUserInfoToolStripMenuItem, changePasswordToolStripMenuItem, signOutToolStripMenuItem });
             accountSettingsToolStripMenuItem.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             accountSettingsToolStripMenuItem.ForeColor = Color.DimGray;
-            accountSettingsToolStripMenuItem.Image = (Image)resources.GetObject("accountSettingsToolStripMenuItem.Image");
+            accountSettingsToolStripMenuItem.Image = (Image)Resources.GetObject("accountSettingsToolStripMenuItem.Image");
             accountSettingsToolStripMenuItem.ImageAlign = ContentAlignment.MiddleLeft;
             accountSettingsToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             accountSettingsToolStripMenuItem.ImageTransparentColor = Color.White;
@@ -336,7 +337,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Image = (Image)Resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(576, 299);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
@@ -353,7 +354,7 @@
             ClientSize = new Size(1813, 903);
             Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
+            Icon = (Icon)Resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Margin = new Padding(4, 3, 4, 3);
             Name = "Main";

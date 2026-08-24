@@ -1,12 +1,12 @@
-﻿using System;
+﻿using DVLV.BLL;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DVLV.BLL;
-using Microsoft.IdentityModel.Tokens;
 namespace DVLV.UI
 {
     public partial class Person_Finder_Filter : UserControl
@@ -49,7 +49,7 @@ namespace DVLV.UI
 
         private void pic_Find_Person_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void Add_New_Person_Click(object sender, EventArgs e)

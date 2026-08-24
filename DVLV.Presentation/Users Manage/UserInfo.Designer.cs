@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI
 {
     partial class UserInfo
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -49,7 +51,7 @@
             // 
             // btn_Close
             // 
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.ImeMode = ImeMode.NoControl;
             btn_Close.Location = new Point(724, 466);

@@ -8,9 +8,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_New_User));
+            System.ComponentModel.ComponentResourceManager Resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_New_User));
             lbl_heder = new Label();
             tab_New_User = new TabControl();
             tab_Personal = new TabPage();
@@ -62,7 +62,7 @@
             // 
             // lbl_heder
             // 
-            resources.ApplyResources(lbl_heder, "lbl_heder");
+            Resources.ApplyResources(lbl_heder, "lbl_heder");
             lbl_heder.ForeColor = Color.Firebrick;
             lbl_heder.Name = "lbl_heder";
             // 
@@ -70,7 +70,7 @@
             // 
             tab_New_User.Controls.Add(tab_Personal);
             tab_New_User.Controls.Add(tab_Login_Info);
-            resources.ApplyResources(tab_New_User, "tab_New_User");
+            Resources.ApplyResources(tab_New_User, "tab_New_User");
             tab_New_User.Name = "tab_New_User";
             tab_New_User.SelectedIndex = 0;
             tab_New_User.SelectedIndexChanged += btn_Next_Click;
@@ -81,24 +81,24 @@
             tab_Personal.Controls.Add(ctr_Person_Info1);
             tab_Personal.Controls.Add(person_Finder_Filter1);
             tab_Personal.Controls.Add(btn_Next);
-            resources.ApplyResources(tab_Personal, "tab_Personal");
+            Resources.ApplyResources(tab_Personal, "tab_Personal");
             tab_Personal.Name = "tab_Personal";
             // 
             // ctr_Person_Info1
             // 
-            resources.ApplyResources(ctr_Person_Info1, "ctr_Person_Info1");
+            Resources.ApplyResources(ctr_Person_Info1, "ctr_Person_Info1");
             ctr_Person_Info1.Name = "ctr_Person_Info1";
             // 
             // person_Finder_Filter1
             // 
-            resources.ApplyResources(person_Finder_Filter1, "person_Finder_Filter1");
+            Resources.ApplyResources(person_Finder_Filter1, "person_Finder_Filter1");
             person_Finder_Filter1.Name = "person_Finder_Filter1";
             person_Finder_Filter1.PersonFound += person_Finder_Filter1_PersonFound;
             // 
             // btn_Next
             // 
-            btn_Next.Image = Properties.Resources.Next_32;
-            resources.ApplyResources(btn_Next, "btn_Next");
+            btn_Next.Image = UI.Properties.Resources.Next_32;
+            Resources.ApplyResources(btn_Next, "btn_Next");
             btn_Next.Name = "btn_Next";
             btn_Next.UseVisualStyleBackColor = true;
             btn_Next.Click += btn_Next_Click;
@@ -119,102 +119,102 @@
             tab_Login_Info.Controls.Add(label3);
             tab_Login_Info.Controls.Add(label2);
             tab_Login_Info.Controls.Add(lbl_UserID);
-            resources.ApplyResources(tab_Login_Info, "tab_Login_Info");
+            Resources.ApplyResources(tab_Login_Info, "tab_Login_Info");
             tab_Login_Info.Name = "tab_Login_Info";
             // 
             // ckb_IsActive
             // 
-            resources.ApplyResources(ckb_IsActive, "ckb_IsActive");
+            Resources.ApplyResources(ckb_IsActive, "ckb_IsActive");
             ckb_IsActive.Name = "ckb_IsActive";
             ckb_IsActive.UseVisualStyleBackColor = true;
             // 
             // txt_Password_Conformation
             // 
-            resources.ApplyResources(txt_Password_Conformation, "txt_Password_Conformation");
+            Resources.ApplyResources(txt_Password_Conformation, "txt_Password_Conformation");
             txt_Password_Conformation.Name = "txt_Password_Conformation";
             // 
             // txt_Password
             // 
-            resources.ApplyResources(txt_Password, "txt_Password");
+            Resources.ApplyResources(txt_Password, "txt_Password");
             txt_Password.Name = "txt_Password";
             // 
             // txt_UserName
             // 
-            resources.ApplyResources(txt_UserName, "txt_UserName");
+            Resources.ApplyResources(txt_UserName, "txt_UserName");
             txt_UserName.Name = "txt_UserName";
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = Properties.Resources.Number_32;
-            resources.ApplyResources(pictureBox4, "pictureBox4");
+            pictureBox4.Image = UI.Properties.Resources.Number_32;
+            Resources.ApplyResources(pictureBox4, "pictureBox4");
             pictureBox4.Name = "pictureBox4";
             pictureBox4.TabStop = false;
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.Number_32;
-            resources.ApplyResources(pictureBox3, "pictureBox3");
+            pictureBox3.Image = UI.Properties.Resources.Number_32;
+            Resources.ApplyResources(pictureBox3, "pictureBox3");
             pictureBox3.Name = "pictureBox3";
             pictureBox3.TabStop = false;
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.Person_32;
-            resources.ApplyResources(pictureBox2, "pictureBox2");
+            pictureBox2.Image = UI.Properties.Resources.Person_32;
+            Resources.ApplyResources(pictureBox2, "pictureBox2");
             pictureBox2.Name = "pictureBox2";
             pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Number_32;
-            resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.Image = UI.Properties.Resources.Number_32;
+            Resources.ApplyResources(pictureBox1, "pictureBox1");
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
             // 
             // label5
             // 
-            resources.ApplyResources(label5, "label5");
+            Resources.ApplyResources(label5, "label5");
             label5.Name = "label5";
             // 
             // label4
             // 
-            resources.ApplyResources(label4, "label4");
+            Resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
             // 
             // label3
             // 
-            resources.ApplyResources(label3, "label3");
+            Resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
             // 
             // label2
             // 
-            resources.ApplyResources(label2, "label2");
+            Resources.ApplyResources(label2, "label2");
             label2.Name = "label2";
             // 
             // lbl_UserID
             // 
-            resources.ApplyResources(lbl_UserID, "lbl_UserID");
+            Resources.ApplyResources(lbl_UserID, "lbl_UserID");
             lbl_UserID.Name = "lbl_UserID";
             // 
             // btn_Save
             // 
-            btn_Save.Image = Properties.Resources.Save_32;
-            resources.ApplyResources(btn_Save, "btn_Save");
+            btn_Save.Image = UI.Properties.Resources.Save_32;
+            Resources.ApplyResources(btn_Save, "btn_Save");
             btn_Save.Name = "btn_Save";
             btn_Save.UseVisualStyleBackColor = true;
             btn_Save.Click += btn_Save_Click;
             // 
             // btn_Close
             // 
-            btn_Close.Image = Properties.Resources.Close_322;
-            resources.ApplyResources(btn_Close, "btn_Close");
+            btn_Close.Image = UI.Properties.Resources.Close_322;
+            Resources.ApplyResources(btn_Close, "btn_Close");
             btn_Close.Name = "btn_Close";
             btn_Close.UseVisualStyleBackColor = true;
             btn_Close.Click += btn_Close_Click;
             // 
             // Add_New_User
             // 
-            resources.ApplyResources(this, "$this");
+            Resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btn_Close);
             Controls.Add(tab_New_User);

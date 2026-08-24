@@ -1,4 +1,5 @@
-﻿using DVLV.UI;
+﻿using DVLV.BLL;
+using DVLV.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,7 +7,6 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DVLV.BLL;
 namespace DVLV.UI
 {
     public partial class List_Test_Types : Form

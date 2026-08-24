@@ -82,7 +82,7 @@ namespace DVLV.BLL
 
         public static ApplicationsBLL Find(int ApplicaID)
         {
-            DataRow row = DAL.ApplicationsDAL.GetApplicationData(ApplicaID);
+            DataRow row = DVLV.DAL.ApplicationsDAL.GetApplicationData(ApplicaID);
 
             if (row != null)
             {
@@ -102,13 +102,13 @@ namespace DVLV.BLL
 
         public void setPaydFees(int TypeID)
         {
-            PaidFees = (int)ApplicationTypesDAL.GetApplicationTypePrice(TypeID);
+            PaidFees = (int)DVLV.DAL.ApplicationTypesDAL.GetApplicationTypePrice(TypeID);
         }
 
         public int AddNew()
         {
             int NewAppID = -1;
-            NewAppID= ApplicationsDAL.AddApplication(PersonID, Date, TypeID, StutusID, LastStutusDate, PaidFees, CreatedByUser);
+            NewAppID= DVLV.DAL.ApplicationsDAL.AddApplication(PersonID, Date, TypeID, StutusID, LastStutusDate, PaidFees, CreatedByUser);
             return NewAppID != -1 ? NewAppID : -1;
         }
 
@@ -155,19 +155,19 @@ namespace DVLV.BLL
 
         public static bool ChangeApplicationStatus(int ApplciationID,int ApplcationStatus,DateTime LastStatusDate)
         {
-            return DAL.ApplicationsDAL.UpdateApplicationStatus(ApplciationID, ApplcationStatus,LastStatusDate);
+            return DVLV.DAL.ApplicationsDAL.UpdateApplicationStatus(ApplciationID, ApplcationStatus,LastStatusDate);
         }
 
         public static bool DeleteApplication(int ApplicationID)
         {
-            return DAL.ApplicationsDAL.DeleteApplication(ApplicationID);
+            return DVLV.DAL.ApplicationsDAL.DeleteApplication(ApplicationID);
         }
 
 
         
         public static int GetApplicationIDByLicenseID(int LicenseID)
         {
-            return DAL.ApplicationsDAL.GetApplicationIDByLicenseID(LicenseID);
+            return DVLV.DAL.ApplicationsDAL.GetApplicationIDByLicenseID(LicenseID);
         }
 
 

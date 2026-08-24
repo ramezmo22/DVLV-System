@@ -16,10 +16,10 @@ namespace DVLV.UI.Tests_Manage
             InitializeComponent();
         }
         public enum enMood { enTestCardShow = 1, enLockedTest = 2 };
-        enMood Mood ;
+        enMood Mood;
         int DrivingLicenseApplicationID = -1;
         int AppointmentID = -1;
-        public void LoadData(int DrivingLicenseApplicationID, enMood Mood , int AppointmentID = -1)
+        public void LoadData(int DrivingLicenseApplicationID, enMood Mood, int AppointmentID = -1)
         {
             this.AppointmentID = AppointmentID;
             this.Mood = Mood;
@@ -38,15 +38,15 @@ namespace DVLV.UI.Tests_Manage
             //For Future Usage
             //switch (Mood)
             //{
-                
+
             //    case enMood.enTestCardShow:
             //        {
-                      
-                        
+
+
 
             //            break;
             //        }
-                
+
             //    case enMood.enLockedTest:
             //        {
             //            lbl_header.Text = "Loacked Test.";

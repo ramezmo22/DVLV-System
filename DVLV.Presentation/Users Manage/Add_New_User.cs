@@ -1,13 +1,13 @@
-﻿using System;
+﻿using DVLV.BLL;
+using DVLV.DAL;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DVLV.BLL;
-using DVLV.DAL;
-using Microsoft.IdentityModel.Tokens;
 namespace DVLV.UI
 {
     public partial class Add_New_User : Form
@@ -15,9 +15,9 @@ namespace DVLV.UI
         public int PersonID = -1;
         public bool Is_Stage_One_Done = false;
         public bool Is_Perrson_Selected = false;
-        public  enum enMood { enAddNewUser=0,enUpdateUser=1 };
+        public enum enMood { enAddNewUser = 0, enUpdateUser = 1 };
         enMood mood;
-        public Add_New_User(int Personid=-1)
+        public Add_New_User(int Personid = -1)
         {
             this.PersonID = Personid;
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace DVLV.UI
 
         public void chackMood()
         {
-            if(PersonID!=-1)
+            if (PersonID != -1)
             {
                 if (!CheckIfPersonIsNotAUser())
                 {
@@ -65,17 +65,17 @@ namespace DVLV.UI
         {
             Is_Perrson_Selected = true;
             // Ensure ctr_Person_Info1 is properly initialized or updated
-        
+
             ctr_Person_Info1.UpdatePersonInfo(e); // Update the existing control
             PersonID = e;
-            
+
 
             if (CheckIfPersonIsNotAUser())
             {
                 Is_Stage_One_Done = true;
                 btn_Next.Enabled = true;
             }
-          
+
         }
         private bool CheckIfPersonIsNotAUser()
         {
@@ -209,18 +209,18 @@ namespace DVLV.UI
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
-         {
-           if(mood==enMood.enAddNewUser)
+        {
+            if (mood == enMood.enAddNewUser)
             {
                 AddNewUser();
             }
-           if(mood==enMood.enUpdateUser)
+            if (mood == enMood.enUpdateUser)
             {
                 UpdateUser();
             }
         }
-       
-     
+
+
 
     }
 }

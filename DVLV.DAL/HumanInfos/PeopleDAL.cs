@@ -67,7 +67,7 @@ namespace DVLV.DAL
             return PeopleTable;
 
         }
-        public static DataTable PeopleDataTable_GridRows()
+        public static DataTable Get_All_People_Data()
         {
             SqlConnection connection = new SqlConnection(ConnectionsDAL.ConnectionString);
             string query = @"SELECT 
@@ -77,7 +77,13 @@ namespace DVLV.DAL
                                 SecondName, 
                                 ThirdName, 
                                 LastName, 
-                                Gendor, 
+                                Gendor,  
+				  CASE
+                  WHEN People.Gendor = 0 THEN 'Male'
+
+                  ELSE 'Female'
+
+                  END as GendorCaption, 
                                 DateOfBirth, 
                                 Countries.CountryName,
                                 Phone, 

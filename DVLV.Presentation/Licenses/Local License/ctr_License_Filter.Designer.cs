@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Licenses
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Licenses
 {
     partial class ctr_License_Filter
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -53,7 +55,7 @@
             // 
             // btn_Search
             // 
-            btn_Search.Image = Properties.Resources.License_View_32;
+            btn_Search.Image = Resources.License_View_32;
             btn_Search.Location = new Point(433, 16);
             btn_Search.Name = "btn_Search";
             btn_Search.Size = new Size(75, 55);

@@ -1,11 +1,11 @@
-﻿using System;
+﻿using DVLV.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DVLV.BLL;
 
 namespace DVLV.UI
 {
@@ -91,7 +91,7 @@ namespace DVLV.UI
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int id = GetIDFromSelectedRow();
-            if (id>-1)
+            if (id > -1)
             {
                 Form frmEditType = new Update_Application_Type(id);
                 frmEditType.ShowDialog();

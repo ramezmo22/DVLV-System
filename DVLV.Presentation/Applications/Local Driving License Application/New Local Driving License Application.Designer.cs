@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI
 {
     partial class New_Local_Driving_License_Application
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -102,7 +104,7 @@
             btn_Next.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btn_Next.Enabled = false;
             btn_Next.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_Next.Image = Properties.Resources.Next_32;
+            btn_Next.Image = Resources.Next_32;
             btn_Next.ImageAlign = ContentAlignment.MiddleRight;
             btn_Next.Location = new Point(756, 452);
             btn_Next.Name = "btn_Next";
@@ -207,7 +209,7 @@
             // 
             // pictureBox5
             // 
-            pictureBox5.Image = Properties.Resources.User_32__2;
+            pictureBox5.Image = Resources.User_32__2;
             pictureBox5.Location = new Point(244, 290);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(32, 32);
@@ -217,7 +219,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = Properties.Resources.money_321;
+            pictureBox4.Image = Resources.money_321;
             pictureBox4.Location = new Point(244, 233);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(32, 32);
@@ -227,7 +229,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.License_Type_32;
+            pictureBox3.Image = Resources.License_Type_32;
             pictureBox3.Location = new Point(244, 179);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(32, 32);
@@ -237,7 +239,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.Calendar_32;
+            pictureBox2.Image = Resources.Calendar_32;
             pictureBox2.Location = new Point(244, 122);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(32, 32);
@@ -247,7 +249,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Number_32;
+            pictureBox1.Image = Resources.Number_32;
             pictureBox1.Location = new Point(244, 68);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(32, 32);
@@ -310,7 +312,7 @@
             btn_Save.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btn_Save.Enabled = false;
             btn_Save.Font = new Font("Segoe UI", 10F);
-            btn_Save.Image = Properties.Resources.Save_32;
+            btn_Save.Image = Resources.Save_32;
             btn_Save.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Save.Location = new Point(743, 639);
             btn_Save.Name = "btn_Save";
@@ -324,7 +326,7 @@
             // 
             btn_Close.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btn_Close.Font = new Font("Segoe UI", 10F);
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(628, 639);
             btn_Close.Name = "btn_Close";

@@ -1,16 +1,17 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using DVLV.BLL;
+using DVLV.DAL;
+using DVLV.UI.Properties;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.IO;
+using System.Numerics;
 using System.Text;
 using System.Windows.Forms;
-using DVLV.BLL;
-using DVLV.DAL;
-using System.Numerics;
-using System.IO;
 namespace DVLV.UI
 {
     public partial class ctr_Person_Card : UserControl
@@ -30,10 +31,10 @@ namespace DVLV.UI
             DateTime MaxDate = DateTime.Now.AddYears(-18);
             dtb_Data_Of_Bridth.MaxDate = MaxDate;
             dtb_Data_Of_Bridth.Value = MaxDate;
- 
+
 
         }
-        public void LoudData(int PersonID )
+        public void LoudData(int PersonID)
         {
             _PersonID = PersonID;
 
@@ -53,11 +54,11 @@ namespace DVLV.UI
         private void rdb_Female_CheckedChanged(object sender, EventArgs e)
         {
             pt_PersonImage.Image = null;
-            pt_PersonImage.Image = Properties.Resources.Female_512;
+            pt_PersonImage.Image = Resources.Female_512;
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            pt_PersonImage.Image = rdb_Female.Checked ? Properties.Resources.Female_512 : Properties.Resources.Male_512 ;
+            pt_PersonImage.Image = rdb_Female.Checked ? Resources.Female_512 : Resources.Male_512;
             lnk_Remove.Visible = false;
         }
         private void TextboxValidation(object sender, CancelEventArgs e)
@@ -74,7 +75,7 @@ namespace DVLV.UI
         }
         private void textBox1_Validating(object sender, CancelEventArgs e)
         {
-          
+
 
             string email1 = textBox1.Text.Trim();
             if (!(email1.Contains('@') && email1.Contains('.') && email1.IndexOf('@') < email1.LastIndexOf('.')))
@@ -93,7 +94,7 @@ namespace DVLV.UI
         private void rdb_Male_CheckedChanged(object sender, EventArgs e)
         {
             pt_PersonImage.Image = null;
-            pt_PersonImage.Image = Properties.Resources.Male_512;
+            pt_PersonImage.Image = Resources.Male_512;
         }
         private void JustNumberValidation(object sender, CancelEventArgs e)
         {
@@ -107,17 +108,17 @@ namespace DVLV.UI
             openFileDialog1.DefaultExt = "png";
             openFileDialog1.Filter = "All Images|*.png;*.jpg;*.jpeg;*.bmp;*.gif;*.tiff;*.ico;*.webp|PNG files (*.png)|*.png|JPG files (*.jpg)|*.jpg|JPEG files (*.jpeg)|*.jpeg|BMP files (*.bmp)|*.bmp|GIF files (*.gif)|*.gif|TIFF files (*.tiff)|*.tiff|ICO files (*.ico)|*.ico|WebP files (*.webp)|*.webp";
             openFileDialog1.FilterIndex = 1;
-            if(openFileDialog1.ShowDialog()==DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 pt_PersonImage.Load(openFileDialog1.FileName);
-                
+
             }
             lnk_Remove.Visible = true;
         }
         private void btn_Close_Click(object sender, EventArgs e)
         {
             this.FindForm().Close();//to close the Father Form 
-        }    
+        }
         public bool CheckIfAllComplete()
         {
             var requiredFields = new Dictionary<string, TextBox>
@@ -154,7 +155,7 @@ namespace DVLV.UI
         }
         public bool GetPersonData(ref PeopleBLL PersonData)
         {
-          
+
             // First Name
             PersonData.FirstName = string.IsNullOrWhiteSpace(txt_FirstName.Text.Trim()) ? "" : txt_FirstName.Text.Trim();
 
@@ -245,7 +246,7 @@ namespace DVLV.UI
                 {
                     // عرض رسالة خطأ إذا فشل النسخ
                     MessageBox.Show($"Error copying image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return  false;
+                    return false;
                 }
             }
             else
@@ -310,7 +311,7 @@ namespace DVLV.UI
             {
                 if (_PersonID > 0)
                 {
-   
+
                     personData.PersonID = _PersonID;
                     personData.Mode = PeopleBLL.enMode.Update;
                 }
@@ -329,12 +330,12 @@ namespace DVLV.UI
             {
                 if (personData.Mode == PeopleBLL.enMode.Update)
                 {
-                    _PersonID = PeopleBLL.GetPersonID(personData.NationalNo);
+                    _PersonID = PeopleBLL.GetPersonIDByNationalNumber(personData.NationalNo);
                     MessageBox.Show("Person saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     PersonSelected(_PersonID);
                 }
-               
-                
+
+
             }
             else
             {

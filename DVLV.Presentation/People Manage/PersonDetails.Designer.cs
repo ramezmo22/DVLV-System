@@ -8,9 +8,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -35,7 +35,7 @@
             // 
             // button1
             // 
-            button1.Image = Properties.Resources.Close_321;
+            button1.Image = UI.Properties.Resources.Close_321;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
             button1.Location = new Point(726, 448);
             button1.Name = "button1";

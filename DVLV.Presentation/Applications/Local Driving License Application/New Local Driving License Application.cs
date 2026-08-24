@@ -18,7 +18,7 @@ namespace DVLV.UI
         private int PersonID { set; get; } = -1;
         private int ApplicationID { set; get; } = -1;
 
-        private ApplicationsBLL CurrentApplication ;
+        private ApplicationsBLL CurrentApplication;
 
         private int localDrivingLicenseApplicationID = -1;
         public enum enMood { New = 0, Update = 1 };
@@ -96,7 +96,7 @@ namespace DVLV.UI
                         int fees = 0;
                         string Title = "";
                         ApplicationTypesBLL.GetType(ref ApplicationTypeId, ref Title, ref fees);
-                        lbl_Application_Fees.Text = fees.ToString(); 
+                        lbl_Application_Fees.Text = fees.ToString();
                         lbl_Application_Date.Text = DateTime.Now.ToString("dd/MM/yyyy");
                         lbl_Created_By.Text = CurrentUserBLL.UserName.ToString();
 
@@ -105,9 +105,9 @@ namespace DVLV.UI
                 case enMood.Update:
                     {
                         //LoudUpdateForm();
-                        
+
                         cbx_License_Classes.DropDownStyle = ComboBoxStyle.DropDownList;
-                        cbx_License_Classes.SelectedIndex = BLL.LocalDrivingLicenseApplicationBLL.GetLicanseClassIDByApplicationID(ApplicationID)-1;
+                        cbx_License_Classes.SelectedIndex = BLL.LocalDrivingLicenseApplicationBLL.GetLicanseClassIDByApplicationID(ApplicationID) - 1;
 
                         int ApplicationTypeId = 1; // 1  For New local driving license service 
                         string Title = "";
@@ -127,7 +127,7 @@ namespace DVLV.UI
             }
         }
 
-        public  ApplicationsBLL AddNewDrivingLicenseApplicationDataFillar()
+        public ApplicationsBLL AddNewDrivingLicenseApplicationDataFillar()
         {
             ApplicationsBLL application = new ApplicationsBLL(PersonID);
             application.TypeID = 1;
@@ -172,11 +172,11 @@ namespace DVLV.UI
                 //here the adding step if all ifs are true 
                 CurrentApplication = AddNewDrivingLicenseApplicationDataFillar();
 
-                var result=LocalDrivingLicenseApplicationBLL.AddNewDrivingLicenseApplication(CurrentApplication, cbx_License_Classes.SelectedIndex + 1);
+                var result = LocalDrivingLicenseApplicationBLL.AddNewDrivingLicenseApplication(CurrentApplication, cbx_License_Classes.SelectedIndex + 1);
                 CurrentApplication.ApplicationID = result.ApplicationID;
                 localDrivingLicenseApplicationID = result.LocalDrivingLicenseApplicationID;
                 ApplicationID = result.ApplicationID;
-                if (localDrivingLicenseApplicationID != -1 && CurrentApplication.ApplicationID != -1) 
+                if (localDrivingLicenseApplicationID != -1 && CurrentApplication.ApplicationID != -1)
                 {
                     return true;
                 }
@@ -191,16 +191,16 @@ namespace DVLV.UI
 
         private bool Update()
         {
-            if(ApplicationID==-1)
+            if (ApplicationID == -1)
             {
                 MessageBox.Show("Error While Updatting. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if(localDrivingLicenseApplicationID==-1)
+            if (localDrivingLicenseApplicationID == -1)
             {
-                localDrivingLicenseApplicationID= LocalDrivingLicenseApplicationBLL.FindLocalDrivingLicenseID(ApplicationID);
+                localDrivingLicenseApplicationID = LocalDrivingLicenseApplicationBLL.FindLocalDrivingLicenseID(ApplicationID);
             }
-            if(!LocalDrivingLicenseApplicationBLL.IsPersonUnderAllowedAge(PersonID,cbx_License_Classes.SelectedIndex+1))
+            if (!LocalDrivingLicenseApplicationBLL.IsPersonUnderAllowedAge(PersonID, cbx_License_Classes.SelectedIndex + 1))
             {
                 MessageBox.Show("  The person is under the age limit for this License Class.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

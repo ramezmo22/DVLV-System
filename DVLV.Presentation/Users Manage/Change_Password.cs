@@ -98,9 +98,9 @@ namespace DVLV.UI
                 UserBLL user = UserBLL.FindUser(UserID);
                 user.UserID = this.UserID;
                 user.Password = txt_Password_Conformation.Text;
-                if(user.Save())
+                if (user.Save())
                 {
-                    if(MessageBox.Show("Password changed Successfully  ", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)==DialogResult.OK)
+                    if (MessageBox.Show("Password changed Successfully  ", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                     {
                         this.Close();
                         return;

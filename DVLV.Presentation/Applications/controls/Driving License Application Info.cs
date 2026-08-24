@@ -1,11 +1,11 @@
-﻿using System;
+﻿using DVLV.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DVLV.BLL;
 
 namespace DVLV.UI.controlls
 {
@@ -16,9 +16,9 @@ namespace DVLV.UI.controlls
             InitializeComponent();
         }
         public int DrivingLicenseApplicationID = -1;
-        public enum enLicenseType { enLocal,enEnternational};
+        public enum enLicenseType { enLocal, enEnternational };
         //public enLicenseType type = enLicenseType.enLocal;
-        public void LoudControlData(int DrivingLicenseApplicationID,enLicenseType type)
+        public void LoudControlData(int DrivingLicenseApplicationID, enLicenseType type)
         {
             this.DrivingLicenseApplicationID = DrivingLicenseApplicationID;
             switch (type)
@@ -27,7 +27,7 @@ namespace DVLV.UI.controlls
                     {
                         var LicenseClassDiscribtion = "";
                         var passedTestsCount = -1;
-                        (LicenseClassDiscribtion,passedTestsCount)=BLL.LocalDrivingLicenseApplicationBLL.GetLocalDrivingLicenseApplicationInfo(DrivingLicenseApplicationID);
+                        (LicenseClassDiscribtion, passedTestsCount) = BLL.LocalDrivingLicenseApplicationBLL.GetLocalDrivingLicenseApplicationInfo(DrivingLicenseApplicationID);
 
                         lbl_License_Class_Info.Text = LicenseClassDiscribtion.ToString();
                         lbl_Number_Of_Passed_Tests.Text = passedTestsCount.ToString();
@@ -37,7 +37,7 @@ namespace DVLV.UI.controlls
                         break;
                     }
 
-                   // Not Already Implemanted--->
+                // Not Already Implemanted--->
                 case enLicenseType.enEnternational:
                     {
 

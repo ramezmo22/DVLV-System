@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Licenses.Local_License
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Licenses.Local_License
 {
     partial class Renew_Local_Driving_License
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -69,7 +71,7 @@
             // btn_Renew_License
             // 
             btn_Renew_License.Enabled = false;
-            btn_Renew_License.Image = Properties.Resources.Renew_Driving_License_322;
+            btn_Renew_License.Image = Resources.Renew_Driving_License_322;
             btn_Renew_License.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Renew_License.Location = new Point(692, 809);
             btn_Renew_License.Name = "btn_Renew_License";
@@ -80,7 +82,7 @@
             // 
             // btn_Close
             // 
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(568, 809);
             btn_Close.Name = "btn_Close";

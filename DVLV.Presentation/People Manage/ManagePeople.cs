@@ -1,106 +1,234 @@
-﻿using System;
+﻿using DVLV.BLL;
+using DVLV.UI;
+using System;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Text.RegularExpressions;
-using DVLV.UI;
 
 namespace DVLV.Presentation
 {
     public partial class ManagePeople : Form
     {
 
+        private static DataTable _dtAllPeople = PeopleBLL.GetAllPeopleTable();
+
+        //only select the columns that you want to show in the grid
+        private DataTable _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo",
+                                                         "FirstName", "SecondName", "ThirdName", "LastName",
+                                                         "GendorCaption", "DateOfBirth", "CountryName",
+                                                         "Phone", "Email");
         public ManagePeople()
         {
             InitializeComponent();
         }
         private void ManagePeople_Load(object sender, EventArgs e)
         {
-            crt_People_Grid_View1.GridViewDataLoad();
-            txt_NumOfRecords.Text = "Number Of Records " + crt_People_Grid_View1.GetNumberOfRecords();
-            comboBox1.SelectedIndex = 0;//Defult
+            dgv_PeopleGrid.DataSource = _dtPeople;
+            if (dgv_PeopleGrid.Rows.Count > 0)
+            {
+
+                dgv_PeopleGrid.Columns[0].HeaderText = "Person ID";
+                dgv_PeopleGrid.Columns[0].Width = 110;
+
+                dgv_PeopleGrid.Columns[1].HeaderText = "National No.";
+                dgv_PeopleGrid.Columns[1].Width = 120;
+
+
+                dgv_PeopleGrid.Columns[2].HeaderText = "First Name";
+                dgv_PeopleGrid.Columns[2].Width = 120;
+
+                dgv_PeopleGrid.Columns[3].HeaderText = "Second Name";
+                dgv_PeopleGrid.Columns[3].Width = 140;
+
+
+                dgv_PeopleGrid.Columns[4].HeaderText = "Third Name";
+                dgv_PeopleGrid.Columns[4].Width = 120;
+
+                dgv_PeopleGrid.Columns[5].HeaderText = "Last Name";
+                dgv_PeopleGrid.Columns[5].Width = 120;
+
+                dgv_PeopleGrid.Columns[6].HeaderText = "Gendor";
+                dgv_PeopleGrid.Columns[6].Width = 120;
+
+                dgv_PeopleGrid.Columns[7].HeaderText = "Date Of Birth";
+                dgv_PeopleGrid.Columns[7].Width = 140;
+
+                dgv_PeopleGrid.Columns[8].HeaderText = "Nationality";
+                dgv_PeopleGrid.Columns[8].Width = 120;
+
+
+                dgv_PeopleGrid.Columns[9].HeaderText = "Phone";
+                dgv_PeopleGrid.Columns[9].Width = 120;
+
+
+                dgv_PeopleGrid.Columns[10].HeaderText = "Email";
+                dgv_PeopleGrid.Columns[10].Width = 170;
+            }
+            lbl_Number_Of_Records_Count.Text = dgv_PeopleGrid.Rows.Count.ToString();
+            cbx_Filter_By.SelectedIndex = 0;//Default
         }
 
-        public void GridFiltering()
+        public void RefreshGridData()
         {
-            switch (comboBox1.SelectedIndex)
+            _dtAllPeople = BLL.PeopleBLL.GetAllPeopleTable();
+            _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo",
+                                                       "FirstName", "SecondName", "ThirdName", "LastName",
+                                                       "GendorCaption", "DateOfBirth", "CountryName",
+                                                       "Phone", "Email");//DataTableNames
+
+            dgv_PeopleGrid.DataSource = _dtPeople;
+            lbl_Number_Of_Records_Count.Text = dgv_PeopleGrid.Rows.Count.ToString();
+
+        }
+        //Filtering Operation:
+        private void txt_Filter_Value_TextChanged(object sender, EventArgs e)
+        {
+            string FilteringColumn = "";
+            switch (cbx_Filter_By.Text)
             {
-                case 1: // PersonID = int mask (only numbers)
-                    MKTB_FillterationInput.Visible = true;
-                    MKTB_FillterationInput.Mask = "0000000000"; // Adjust length as needed
-                    MKTB_FillterationInput.ResetText();
+                case "PersonID":
+                    FilteringColumn = "PersonID";
                     break;
-                case 2: // NationalNo = accept int and char
-                    MKTB_FillterationInput.Visible = true;
-                    MKTB_FillterationInput.Mask = ""; // No mask, use Regex in validation
-                    MKTB_FillterationInput.ResetText();
+                case "NationalNo":
+                    FilteringColumn = "NationalNo";
                     break;
-                case 3: // FirstName = chars only
-                case 4: // SecondName = chars only
-                case 5: // ThirdName = chars only
-                case 6: // LastName = chars only
-                case 7: // Nationality = chars only
-                case 8: // Gendor = chars only
-                    MKTB_FillterationInput.Visible = true;
-                    MKTB_FillterationInput.Mask = ""; // No mask, use Regex in validation
-                    MKTB_FillterationInput.ResetText();
+                case "FirstName":
+                    FilteringColumn = "FirstName";
                     break;
-                case 9: // Phone = string (you can use a phone mask)
-                    MKTB_FillterationInput.Visible = true;
-                    MKTB_FillterationInput.Mask = "000000000000"; // Example phone mask
-                    MKTB_FillterationInput.ResetText();
+                case "SecondName":
+                    FilteringColumn = "SecondName";
                     break;
-                case 10: // Email = string (no mask, use Regex in validation)
-                    MKTB_FillterationInput.Visible = true;
-                    MKTB_FillterationInput.Mask = "";
-                    MKTB_FillterationInput.ResetText();
+                case "ThirdName":
+                    FilteringColumn = "ThirdName";
                     break;
-                default: // None = no mask
-                    MKTB_FillterationInput.Visible = false;
-                    MKTB_FillterationInput.Mask = "";
-                    MKTB_FillterationInput.ResetText();
+                case "LastName":
+                    FilteringColumn = "LastName";
+                    break;
+                case "Nationality":
+                    FilteringColumn = "CountryName";
+                    break;
+                case "Gendor":
+                    FilteringColumn = "GendorCaption";
+                    break;
+                case "Phone":
+                    FilteringColumn = "Phone";
+                    break;
+                case "Email":
+                    FilteringColumn = "Email";
+                    break;
+                case "None":
+                default:
+                    FilteringColumn = "None";
                     break;
             }
+
+            // Apply filtering
+            if (string.IsNullOrEmpty(FilteringColumn) || FilteringColumn == "None" || txt_Filter_Value.Text.Trim() == "")
+            {
+                _dtPeople.DefaultView.RowFilter = "";
+            }
+            else if (FilteringColumn == "PersonID")
+            {
+                _dtPeople.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilteringColumn, txt_Filter_Value.Text.Trim());
+            }
+            else
+            {
+                _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilteringColumn, txt_Filter_Value.Text.Trim());
+            }
+
+            lbl_Number_Of_Records_Count.Text = dgv_PeopleGrid.Rows.Count.ToString();
         }
-        public void FilterOnTextChange()
-        {
-
-            int FilterMood = comboBox1.SelectedIndex;
-            //vaildation 
-
-            crt_People_Grid_View1.GridViewDataLoad(FilterMood, MKTB_FillterationInput.Text);
-            txt_NumOfRecords.Text = "Number Of Records " + crt_People_Grid_View1.GetNumberOfRecords();
-        }
-
-
-
-
-        private void crt_People_Grid_View1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GridFiltering();
-        }
+            txt_Filter_Value.Visible = !(cbx_Filter_By.SelectedIndex == 0);
 
-        private void MKTB_FillterationInput_TextChanged(object sender, EventArgs e)
-        {
-            FilterOnTextChange();
+            if (txt_Filter_Value.Visible)
+            {
+                txt_Filter_Value.Text = "";
+                txt_Filter_Value.Focus();
+            }
         }
-
-        private void txt_NumOfRecords_Click(object sender, EventArgs e)
+        private int GetIdFromSelectedColumn()
         {
+            if (dgv_PeopleGrid.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgv_PeopleGrid.SelectedRows[0];
+                // Assuming the PersonID is stored in the "clnPersonID" column
+                if (selectedRow.Cells["PersonID"].Value != null)
+                {
+                    return Convert.ToInt32(selectedRow.Cells["PersonID"].Value);
+                }
+            }
+            else
+            {
+                MessageBox.Show("You must select a person in the grid ", "Error", MessageBoxButtons.OK);
+                return -1;
+            }
+            return -1;
+        }
+        private void addNewPrToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form NewPerson = new frmAddNewPerson();
+            NewPerson.ShowDialog();
+            RefreshGridData();
+        }
+        private void tsm_Show_Details_Click(object sender, EventArgs e)
+        {
+            int ID = GetIdFromSelectedColumn();
+            if (ID > 0)
+            {
+                Form frmPerson = new PersonDetails(ID);
+                frmPerson.Show();
+                RefreshGridData(); // Reload the data into the grid view
+            }
+            else return;
+        }
+        private void cm_Person_Settings_Opening(object sender, CancelEventArgs e)
+        {
+            if (dgv_PeopleGrid.SelectedRows.Count < 1)
+            {
+                e.Cancel = true;
+            }
+        }
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int ID = GetIdFromSelectedColumn();
+            if (ID > 0)
+            {
+                frmAddNewPerson EditPerson = new frmAddNewPerson(ID);
+                EditPerson.ShowDialog();
+                dgv_PeopleGrid.DataSource = null; // Clear the existing data source
+                RefreshGridData(); // Reload the data into the grid view
+            }
+            else return;
+        }
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete this person?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                int ID = GetIdFromSelectedColumn();
+                if (PeopleBLL.DeletePerson(ID))
+                {
+                    if (MessageBox.Show("Person deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                    {
+                        // Refresh the grid or perform any other necessary actions
+                        dgv_PeopleGrid.DataSource = null; // Clear the existing data source
+                        RefreshGridData(); // Reload the data into the grid view
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Person was not deleted because it was data linked to it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
         }
 
@@ -108,18 +236,17 @@ namespace DVLV.Presentation
         {
             this.Close();
         }
-
         private void btn_AddPerson_Click(object sender, EventArgs e)
         {
             Form AddPersonF = new frmAddNewPerson();
             AddPersonF.ShowDialog();
-            RefreshData();
+            RefreshGridData();
         }
 
-        public void RefreshData()
+        private void txt_Filter_Value_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // أعد تحميل البيانات أو قم بتحديث العناصر
-            crt_People_Grid_View1.GridViewDataLoad();
+            if (cbx_Filter_By.Text == "PersonID")
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

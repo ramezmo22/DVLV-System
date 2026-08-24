@@ -99,7 +99,7 @@ namespace DVLV.UI.Applications_Manage
             {
                 MessageBox.Show("The license replaced the new license ID is " + _NewLicenseID, "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 lnk_Show_New_License_Info.Enabled = true;
-                ctr_License_Filter1.Enabled=false;
+                ctr_License_Filter1.Enabled = false;
                 btn_Replace_License.Enabled = false;
 
             }
@@ -117,7 +117,7 @@ namespace DVLV.UI.Applications_Manage
 
         private void lnk_Show_New_License_Info_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if(_NewLicenseID!=-1)
+            if (_NewLicenseID != -1)
             {
                 int renewedAppID = ApplicationsBLL.GetApplicationIDByLicenseID(_NewLicenseID);
                 License_Info frm = new License_Info(renewedAppID);

@@ -41,7 +41,7 @@ namespace DVLV.UI.Licenses.Local_License
             {
                 this._LicenseID = licenseID;
                 this._LicenseClassID = BLL.LocalDrivingLicenseApplicationBLL.GetLicanseClassIDByLicenseID(_LicenseID);
-                
+
                 (int licenseFees, int licenseValidity) = LicenseClassesBLL.GetFeesAndValidityLength(this._LicenseClassID);
                 this._LicenseValidity = licenseValidity;
                 this._LicenseFees = licenseFees;

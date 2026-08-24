@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Licenses
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Licenses
 {
     partial class License_Info
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -38,7 +40,7 @@
             // btn_Close
             // 
             btn_Close.Font = new Font("Segoe UI", 10F);
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(679, 516);
             btn_Close.Name = "btn_Close";
@@ -50,7 +52,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.LicenseView_400;
+            pictureBox1.Image = Resources.LicenseView_400;
             pictureBox1.Location = new Point(300, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(170, 110);

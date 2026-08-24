@@ -116,86 +116,13 @@ namespace DVLV.BLL
             else
                 return false;
         }
-        public static DataTable PeopleDataSelection(int FilterMood = 0, string ForSearching = "")
+        public static DataTable GetAllPeopleTable()
         {
-            DataTable data = PeopleDAL.PeopleDataTable_GridRows();
-            switch (FilterMood)
-            {
-                case 0:
-                    return data;
-                case 1: // PersonID (int)
-                    return FilterDataTable(data, "PersonID", ForSearching, true);
-                case 2: // NationalNo (string)
-                    return FilterDataTable(data, "NationalNo", ForSearching, false, true);
-                case 3: // FirstName (string)
-                    return FilterDataTable(data, "FirstName", ForSearching, false, true);
-                case 4: // SecondName (string)
-                    return FilterDataTable(data, "SecondName", ForSearching, false, true);
-                case 5: // ThirdName (string)
-                    return FilterDataTable(data, "ThirdName", ForSearching, false, true);
-                case 6: // LastName (string)
-                    return FilterDataTable(data, "LastName", ForSearching, false, true);
-                case 7: // Nationality (string)
-                    return FilterDataTable(data, "Nationality", ForSearching, false, true);
-                case 8: // Gender (string)
-                    {
-                        int Gendor;
-                        if (ForSearching.StartsWith('M') || ForSearching.StartsWith("m"))
-                        {
-
-                            Gendor = 0;
-                        }
-                        else if (ForSearching.StartsWith('F') || ForSearching.StartsWith("f"))
-                            Gendor = 1;
-                        else if (ForSearching is null || ForSearching.IsNullOrEmpty())
-                        {
-                            return data;
-                        }
-                        else Gendor = -1;
-                        return FilterDataTable(data, "Gendor", Gendor.ToString(), true);
-                    }
-                case 9: // Phone (string)
-                    return FilterDataTable(data, "Phone", ForSearching, false, true);
-                case 10: // Email (string)
-                    return FilterDataTable(data, "Email", ForSearching, false, true);
-                default:
-                    return data;
-            }
+            return PeopleDAL.Get_All_People_Data();
         }
-
-        private static DataTable FilterDataTable(DataTable data, string columnName, string value, bool isInt = false, bool useLike = false)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return data;
-            }
-            string filteringQuery;
-            if (isInt)
-            {
-                filteringQuery = $"{columnName} = {value}";
-            }
-            else if (useLike)
-            {
-                filteringQuery = $"{columnName} LIKE '%{value}%'";
-            }
-            else
-            {
-                filteringQuery = $"{columnName} = '{value}'";
-            }
-            DataRow[] filteringRows = data.Select(filteringQuery);
-            DataTable filteredTable = data.Clone();//get the columns 
-
-            foreach (DataRow row in filteringRows)
-            {
-                filteredTable.ImportRow(row);
-            }
-            return filteredTable;
-        }
-
-
         public static int PersonSelection(int FilterMood = -1, string ForSearching = "")
         {
-            DataTable data = PeopleDAL.PeopleDataTable_GridRows();
+           
             switch (FilterMood)
             {
                 case 0: // PersonID (int)
@@ -221,10 +148,6 @@ namespace DVLV.BLL
                     return -1;
             }
         }
-
-       
-
-
         public bool Save()
         {
             switch (Mode)
@@ -245,8 +168,7 @@ namespace DVLV.BLL
             }
             return false;
         }
-
-        public static int GetPersonID(string NationalNum)
+        public static int GetPersonIDByNationalNumber(string NationalNum)
         {
             int personID = DAL.PeopleDAL.FindPersonByNationalNumber(NationalNum);
             if (personID != -1)
@@ -255,7 +177,6 @@ namespace DVLV.BLL
             }
             else return -1;
         }
-
         public static PeopleBLL FindPerson(int ID)
         {
             PersonDataTransferObject obj = DAL.PeopleDAL.FindPersonByID(ID);
@@ -265,14 +186,11 @@ namespace DVLV.BLL
             }
             else return null;
         }
-
-      
         public static bool IsPersonExists(int ID)
         {
             return PeopleDAL.IsPersonExists(ID);
 
         }
-
         public static bool DeletePerson(int ID)
         {
             if (PeopleDAL.IsPersonExists(ID))
@@ -281,7 +199,6 @@ namespace DVLV.BLL
             }
             else return false;
         }
-
         public static int GetPersonIDByApplicationID(int ApplicationID)
         {
             return PeopleDAL.GetPersonIDByApplicationID(ApplicationID);
@@ -290,10 +207,6 @@ namespace DVLV.BLL
         {
             return DAL.PeopleDAL.GetPersonFullName(PersonID);
         }
-
-
-
-
         public static int GetPersonIDByDriverID(int DriverID)
         {
             return DAL.PeopleDAL.GetPersonIDByDriverID(DriverID);

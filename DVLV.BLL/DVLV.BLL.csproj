@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DVLV.DAL\DVLV.DAL.csproj" />
+    <ProjectReference Include="..\DVLV.DAL\DVLV.DAL.csproj" />
   </ItemGroup>
 
 </Project>

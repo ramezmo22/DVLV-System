@@ -1,12 +1,12 @@
-﻿using System;
+﻿using DVLV.BLL;
+using DVLV.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DVLV.BLL;
-using DVLV.DAL;
 namespace DVLV.UI
 {
     public partial class Login_Information : UserControl
@@ -41,8 +41,8 @@ namespace DVLV.UI
                 if (UserBLL.IsUserExists(this.UserID))//Check Existance <--
                 {
                     //ID and USernaem and Activation
-                     UserDataTransferObject data = UserBLL.GetUsersDataByUserID(this.UserID);
-                     if(data!=null)
+                    UserDataTransferObject data = UserBLL.GetUsersDataByUserID(this.UserID);
+                    if (data != null)
                     {
                         lbl_UserID.Text = data.UserID.ToString();
                         lbl_Username.Text = data.UserName.ToString();

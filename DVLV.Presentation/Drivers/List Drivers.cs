@@ -19,7 +19,7 @@ namespace DVLV.UI.Drivers
 
         }
 
-        private void Grid_Initialize(int SelectedIndex=0, string FilteringQurey="")
+        private void Grid_Initialize(int SelectedIndex = 0, string FilteringQurey = "")
         {
 
             DataTable table = BLL.DriverBLL.GetFilteredData(SelectedIndex, FilteringQurey);
@@ -68,7 +68,7 @@ namespace DVLV.UI.Drivers
                 DataPropertyName = "NumberOfActiveLicenses",
                 HeaderText = "Active Licenses",
                 ReadOnly = true,
-               
+
             });
 
 

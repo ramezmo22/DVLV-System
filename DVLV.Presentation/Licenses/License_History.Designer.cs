@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Licenses
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Licenses
 {
     partial class License_History
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -38,7 +40,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.PersonLicenseHistory_512;
+            pictureBox1.Image = Resources.PersonLicenseHistory_512;
             pictureBox1.Location = new Point(29, 78);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(190, 204);
@@ -66,7 +68,7 @@
             // 
             // button1
             // 
-            button1.Image = Properties.Resources.Close_32;
+            button1.Image = Resources.Close_32;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
             button1.Location = new Point(941, 743);
             button1.Name = "button1";

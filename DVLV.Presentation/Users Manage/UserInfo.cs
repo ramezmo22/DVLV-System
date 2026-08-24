@@ -16,7 +16,7 @@ namespace DVLV.UI
         }
         int UserID = -1;
         int PersonID = -1;
-        public UserInfo(int UserID,int PersonID)
+        public UserInfo(int UserID, int PersonID)
         {
             InitializeComponent();
             this.UserID = UserID;

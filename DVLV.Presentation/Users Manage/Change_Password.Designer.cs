@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI
 {
     partial class Change_Password
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -70,7 +72,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = Properties.Resources.Number_32;
+            pictureBox4.Image = Resources.Number_32;
             pictureBox4.ImeMode = ImeMode.NoControl;
             pictureBox4.Location = new Point(183, 567);
             pictureBox4.Name = "pictureBox4";
@@ -80,7 +82,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.Number_32;
+            pictureBox3.Image = Resources.Number_32;
             pictureBox3.ImeMode = ImeMode.NoControl;
             pictureBox3.Location = new Point(183, 517);
             pictureBox3.Name = "pictureBox3";
@@ -121,7 +123,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Number_32;
+            pictureBox1.Image = Resources.Number_32;
             pictureBox1.ImeMode = ImeMode.NoControl;
             pictureBox1.Location = new Point(183, 467);
             pictureBox1.Name = "pictureBox1";
@@ -143,7 +145,7 @@
             // btn_Save
             // 
             btn_Save.Font = new Font("Segoe UI", 9.75F);
-            btn_Save.Image = Properties.Resources.Save_32;
+            btn_Save.Image = Resources.Save_32;
             btn_Save.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Save.Location = new Point(722, 680);
             btn_Save.Name = "btn_Save";
@@ -156,7 +158,7 @@
             // btn_Close
             // 
             btn_Close.Font = new Font("Segoe UI", 9.75F);
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(606, 680);
             btn_Close.Name = "btn_Close";

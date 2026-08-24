@@ -21,11 +21,11 @@ namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
         }
 
 
-        public void LoudData(int LicenseID,enMood Mood)
+        public void LoudData(int LicenseID, enMood Mood)
         {
             this.LicenseID = LicenseID;
             this.Mood = Mood;
-            switch(Mood)
+            switch (Mood)
             {
                 case enMood.enShowmood:
                     {
@@ -67,7 +67,7 @@ namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
                         break;
                     }
             }
-            
+
 
         }
     }

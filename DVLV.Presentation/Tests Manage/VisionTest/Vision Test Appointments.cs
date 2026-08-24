@@ -1,4 +1,6 @@
-﻿using DVLV.UI;
+﻿using DVLV.BLL;
+using DVLV.UI;
+using DVLV.UI.controlls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,8 +8,6 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DVLV.BLL;
-using DVLV.UI.controlls;
 
 namespace DVLV.UI.Tests_Manage
 {
@@ -31,7 +31,7 @@ namespace DVLV.UI.Tests_Manage
 
         public void AppointmentGridInitilaization()
         {
-            DataTable AppointmentsTable = BLL.TestAppointmentsBLL.GetAppointmentsDataTable(LocalDrivingLicenseApplicationID,1);
+            DataTable AppointmentsTable = BLL.TestAppointmentsBLL.GetAppointmentsDataTable(LocalDrivingLicenseApplicationID, 1);
 
             if (AppointmentsTable.Rows.Count < 1)
             {
@@ -120,7 +120,7 @@ namespace DVLV.UI.Tests_Manage
         //
         //
         //
-        
+
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int AppointemntID = GetAppointmentIDFromGrid();
@@ -149,7 +149,7 @@ namespace DVLV.UI.Tests_Manage
         private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int AppointemntID = GetAppointmentIDFromGrid();
-            if(AppointemntID !=-1)
+            if (AppointemntID != -1)
             {
                 if (!BLL.TestAppointmentsBLL.IsAppointmentLocked(AppointemntID))
                 {

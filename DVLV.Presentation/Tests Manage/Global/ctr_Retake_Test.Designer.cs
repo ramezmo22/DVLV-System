@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Tests_Manage
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Tests_Manage
 {
     partial class ctr_Retake_Test
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -105,7 +107,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.money_32;
+            pictureBox1.Image = Resources.money_32;
             pictureBox1.Location = new Point(106, 13);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(32, 32);
@@ -114,7 +116,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.Number_32;
+            pictureBox2.Image = Resources.Number_32;
             pictureBox2.Location = new Point(106, 60);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(32, 32);
@@ -123,7 +125,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.money_32;
+            pictureBox3.Image = Resources.money_32;
             pictureBox3.Location = new Point(287, 13);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(32, 32);

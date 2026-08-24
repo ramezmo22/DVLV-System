@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Detains
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Detains
 {
     partial class ctr_Detain_License_Info
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -415,7 +417,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.License_Type_32;
+            pictureBox1.Image = Resources.License_Type_32;
             pictureBox1.Location = new Point(144, 36);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(32, 32);
@@ -425,7 +427,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.Number_32;
+            pictureBox2.Image = Resources.Number_32;
             pictureBox2.Location = new Point(144, 145);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(32, 32);
@@ -434,7 +436,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.Person_32;
+            pictureBox3.Image = Resources.Person_32;
             pictureBox3.Location = new Point(144, 73);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(32, 32);
@@ -443,7 +445,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = Properties.Resources.Number_32;
+            pictureBox4.Image = Resources.Number_32;
             pictureBox4.Location = new Point(144, 110);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(32, 32);
@@ -452,7 +454,7 @@
             // 
             // pictureBox5
             // 
-            pictureBox5.Image = Properties.Resources.Man_32;
+            pictureBox5.Image = Resources.Man_32;
             pictureBox5.Location = new Point(144, 181);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(32, 32);
@@ -461,7 +463,7 @@
             // 
             // pictureBox6
             // 
-            pictureBox6.Image = Properties.Resources.Calendar_32;
+            pictureBox6.Image = Resources.Calendar_32;
             pictureBox6.Location = new Point(144, 216);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(32, 32);
@@ -470,7 +472,7 @@
             // 
             // pictureBox7
             // 
-            pictureBox7.Image = Properties.Resources.Notes_32;
+            pictureBox7.Image = Resources.Notes_32;
             pictureBox7.Location = new Point(144, 251);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(32, 32);
@@ -479,7 +481,7 @@
             // 
             // pictureBox8
             // 
-            pictureBox8.Image = Properties.Resources.Notes_32;
+            pictureBox8.Image = Resources.Notes_32;
             pictureBox8.Location = new Point(144, 286);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(32, 32);
@@ -488,7 +490,7 @@
             // 
             // pictureBox9
             // 
-            pictureBox9.Image = Properties.Resources.Question_32;
+            pictureBox9.Image = Resources.Question_32;
             pictureBox9.Location = new Point(546, 73);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(32, 32);
@@ -497,7 +499,7 @@
             // 
             // pictureBox10
             // 
-            pictureBox10.Image = Properties.Resources.Calendar_32;
+            pictureBox10.Image = Resources.Calendar_32;
             pictureBox10.Location = new Point(546, 110);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(32, 32);
@@ -506,7 +508,7 @@
             // 
             // pictureBox11
             // 
-            pictureBox11.Image = Properties.Resources.Number_32;
+            pictureBox11.Image = Resources.Number_32;
             pictureBox11.Location = new Point(546, 145);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(32, 32);
@@ -515,7 +517,7 @@
             // 
             // pictureBox12
             // 
-            pictureBox12.Image = Properties.Resources.Calendar_32;
+            pictureBox12.Image = Resources.Calendar_32;
             pictureBox12.Location = new Point(546, 181);
             pictureBox12.Name = "pictureBox12";
             pictureBox12.Size = new Size(32, 32);
@@ -524,7 +526,7 @@
             // 
             // pictureBox13
             // 
-            pictureBox13.Image = Properties.Resources.Question_32;
+            pictureBox13.Image = Resources.Question_32;
             pictureBox13.Location = new Point(546, 216);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(32, 32);
@@ -583,7 +585,7 @@
             // 
             // pcb_Person_Picture
             // 
-            pcb_Person_Picture.Image = Properties.Resources.Male_512;
+            pcb_Person_Picture.Image = Resources.Male_512;
             pcb_Person_Picture.Location = new Point(673, 97);
             pcb_Person_Picture.Name = "pcb_Person_Picture";
             pcb_Person_Picture.Size = new Size(124, 132);

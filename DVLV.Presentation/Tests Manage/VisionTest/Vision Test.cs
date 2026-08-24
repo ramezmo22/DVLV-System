@@ -17,13 +17,13 @@ namespace DVLV.UI.Tests_Manage
 
         }
 
-        public enum enMood { enAddNew = 1, enEdit = 2 ,enRetake=3,enLockedEdit=4};
+        public enum enMood { enAddNew = 1, enEdit = 2, enRetake = 3, enLockedEdit = 4 };
         enMood Mood = enMood.enAddNew;
         int DrivingLicenseApplicationID = -1;
         int AppointmentID = -1;
         int Fees = -1;
 
-        public void LoudData(int DrivingLicenseApplicationID, enMood Mood = enMood.enAddNew,int AppointmentID=-1)
+        public void LoudData(int DrivingLicenseApplicationID, enMood Mood = enMood.enAddNew, int AppointmentID = -1)
         {
             this.AppointmentID = AppointmentID;
             this.Mood = Mood;
@@ -32,11 +32,12 @@ namespace DVLV.UI.Tests_Manage
             (string DclassName, string Name, int Trials, int Fees) = LocalDrivingLicenseApplicationBLL.GetApplicationDataForScheduleTest(DrivingLicenseApplicationID);
 
             if (Mood == enMood.enAddNew && Trials > 0)
-            { this.Mood = enMood.enRetake;
+            {
+                this.Mood = enMood.enRetake;
                 Mood = enMood.enRetake;
             }
-            
-            
+
+
             lbl_DrivingLicenseApplicationID.Text = this.DrivingLicenseApplicationID.ToString();
             lbl_LicenseClass.Text = DclassName;
             lbl_Name.Text = Name;
@@ -45,11 +46,11 @@ namespace DVLV.UI.Tests_Manage
             this.Fees = Fees;
 
             dtp_Date.MinDate = DateTime.Now;
-            dtp_Date.MaxDate = DateTime.Now.AddYears(5); 
+            dtp_Date.MaxDate = DateTime.Now.AddYears(5);
 
 
 
-            switch(Mood)
+            switch (Mood)
             {
                 case enMood.enAddNew:
                     {
@@ -59,7 +60,7 @@ namespace DVLV.UI.Tests_Manage
                 case enMood.enEdit:
                     {
                         DateTime Date = BLL.TestAppointmentsBLL.GetAppointmentDate(AppointmentID);
-                        if(Date==DateTime.MinValue)
+                        if (Date == DateTime.MinValue)
                         {
                             //Error handelling
                         }
@@ -112,7 +113,7 @@ namespace DVLV.UI.Tests_Manage
                 case enMood.enAddNew:
                     {
 
-                        if(BLL.TestAppointmentsBLL.AddNewTestAppointment(1, DrivingLicenseApplicationID, dtp_Date.Value, Convert.ToInt16(lbl_Fees.Text), CurrentUserBLL.UserID, false)>-1)
+                        if (BLL.TestAppointmentsBLL.AddNewTestAppointment(1, DrivingLicenseApplicationID, dtp_Date.Value, Convert.ToInt16(lbl_Fees.Text), CurrentUserBLL.UserID, false) > -1)
                         {
                             MessageBox.Show(" The appointment Added successfully .", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.FindForm().Close();
@@ -120,7 +121,7 @@ namespace DVLV.UI.Tests_Manage
                         else
                         {
                             MessageBox.Show("Error occur while Saving. ", "Error  ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            
+
 
                         }
 
@@ -129,9 +130,9 @@ namespace DVLV.UI.Tests_Manage
                     }
                 case enMood.enEdit:
                     {
-                        if(BLL.TestAppointmentsBLL.UpdateDate(AppointmentID,dtp_Date.Value))
+                        if (BLL.TestAppointmentsBLL.UpdateDate(AppointmentID, dtp_Date.Value))
                         {
-                            MessageBox.Show("  Date Updated Successfully .","Saved",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                            MessageBox.Show("  Date Updated Successfully .", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.FindForm().Close();
                         }
                         else
@@ -142,11 +143,11 @@ namespace DVLV.UI.Tests_Manage
                 case enMood.enRetake:
                     {
                         //Create Application 
-                       if( !ctr_Retake_Test1.CreateRetakeTestApplication())
+                        if (!ctr_Retake_Test1.CreateRetakeTestApplication())
                             MessageBox.Show("Error occurred while creating an application ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         //Create the New Appointment
-                        if(BLL.TestAppointmentsBLL.AddNewTestAppointment(1,DrivingLicenseApplicationID,DateTime.Now,Fees,BLL.CurrentUserBLL.UserID,false)>-1)
+                        if (BLL.TestAppointmentsBLL.AddNewTestAppointment(1, DrivingLicenseApplicationID, DateTime.Now, Fees, BLL.CurrentUserBLL.UserID, false) > -1)
                         {
                             MessageBox.Show(" The appointment Added successfully .", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.FindForm().Close();
@@ -166,6 +167,6 @@ namespace DVLV.UI.Tests_Manage
             }
         }
 
-     
+
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI
 {
     partial class Manage_Application_Types
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -43,7 +45,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Application_Types_512;
+            pictureBox1.Image = Resources.Application_Types_512;
             pictureBox1.Location = new Point(285, 26);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(222, 210);
@@ -65,7 +67,7 @@
             // btn_Close
             // 
             btn_Close.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(671, 621);
             btn_Close.Name = "btn_Close";
@@ -107,7 +109,7 @@
             // 
             // editToolStripMenuItem
             // 
-            editToolStripMenuItem.Image = Properties.Resources.edit_321;
+            editToolStripMenuItem.Image = Resources.edit_321;
             editToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new Size(202, 38);

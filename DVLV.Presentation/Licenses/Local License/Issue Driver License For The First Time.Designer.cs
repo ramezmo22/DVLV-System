@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Licenses
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Licenses
 {
     partial class Issue_Driver_License_For_The_First_Time
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -72,7 +74,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Notes_32;
+            pictureBox1.Image = Resources.Notes_32;
             pictureBox1.Location = new Point(72, 381);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(32, 32);
@@ -83,7 +85,7 @@
             // btn_Close
             // 
             btn_Close.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(566, 512);
             btn_Close.Name = "btn_Close";
@@ -96,7 +98,7 @@
             // btn_License_Issue
             // 
             btn_License_Issue.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_License_Issue.Image = Properties.Resources.License_Type_32;
+            btn_License_Issue.Image = Resources.License_Type_32;
             btn_License_Issue.ImageAlign = ContentAlignment.MiddleLeft;
             btn_License_Issue.Location = new Point(692, 512);
             btn_License_Issue.Name = "btn_License_Issue";

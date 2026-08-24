@@ -8,9 +8,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -100,7 +100,7 @@
             // btn_Close
             // 
             btn_Close.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = UI.Properties.Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(581, 708);
             btn_Close.Name = "btn_Close";
@@ -114,7 +114,7 @@
             // 
             btn_Issue_License.Enabled = false;
             btn_Issue_License.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            btn_Issue_License.Image = Properties.Resources.International_32;
+            btn_Issue_License.Image = UI.Properties.Resources.International_32;
             btn_Issue_License.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Issue_License.Location = new Point(700, 708);
             btn_Issue_License.Name = "btn_Issue_License";

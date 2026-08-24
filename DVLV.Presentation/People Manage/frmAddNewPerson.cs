@@ -23,7 +23,7 @@ namespace DVLV.UI
         {
             if (_parentForm is ManagePeople parent)
             {
-                parent.RefreshData();
+                parent.RefreshGridData();
             }
         }
         private void SetIDMood(int PersonID)

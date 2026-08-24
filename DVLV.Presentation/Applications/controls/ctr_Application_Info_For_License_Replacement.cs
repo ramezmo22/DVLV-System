@@ -20,9 +20,9 @@ namespace DVLV.UI.Applications_Manage
         public ctr_Application_Info_For_License_Replacement()
         {
             InitializeComponent();
-            
+
         }
-        public void LoudData(int LicenseID,enReplacementMood Mood)
+        public void LoudData(int LicenseID, enReplacementMood Mood)
         {
             _LicenseID = LicenseID;
             this._Mood = Mood;
@@ -39,19 +39,19 @@ namespace DVLV.UI.Applications_Manage
             int ID = -1;
             string Title = "";
             int Fees = 0;
-            switch(mood)
+            switch (mood)
             {
                 case enReplacementMood.enDamaged:
                     {
                         ID = 3;
-                        ApplicationTypesBLL.GetType(ref ID,ref Title,ref Fees);
+                        ApplicationTypesBLL.GetType(ref ID, ref Title, ref Fees);
 
                         break;
                     }
                 case enReplacementMood.enLost:
                     {
                         ID = 4;
-                        ApplicationTypesBLL.GetType(ref ID,ref Title,ref Fees);
+                        ApplicationTypesBLL.GetType(ref ID, ref Title, ref Fees);
                         break;
                     }
             }
@@ -64,14 +64,14 @@ namespace DVLV.UI.Applications_Manage
         {
             int NewLicenseID = -1;
 
-            int DriverID =BLL.DriverBLL.GetDriverIDByLicenseID(_LicenseID);
-            int PersonID =BLL.PeopleBLL.GetPersonIDByDriverID(DriverID);
+            int DriverID = BLL.DriverBLL.GetDriverIDByLicenseID(_LicenseID);
+            int PersonID = BLL.PeopleBLL.GetPersonIDByDriverID(DriverID);
             ApplicationsBLL ReplacementApplication = new ApplicationsBLL(PersonID, DateTime.Now, _ApplicationTypeID, 1, _ApplicationFees, DateTime.Now, CurrentUserBLL.UserID);
-            if(ReplacementApplication.Save())
+            if (ReplacementApplication.Save())
             {
                 lbl_Renew_License_Application_ID.Text = ReplacementApplication.ApplicationID.ToString();
                 int licenseClassID = BLL.LocalDrivingLicenseApplicationBLL.GetLicanseClassIDByLicenseID(_LicenseID);
-                DateTime ExpirationDate= LicenseBLL.GetExpirationDate(_LicenseID);
+                DateTime ExpirationDate = LicenseBLL.GetExpirationDate(_LicenseID);
                 int LicenseFees = BLL.LicenseClassesBLL.GetFees(licenseClassID);
                 NewLicenseID = LicenseBLL.AddNewLicense(ReplacementApplication, PersonID, DriverID, licenseClassID, ExpirationDate, "", LicenseFees, _ApplicationTypeID);
                 lbl_Renew_License_ID.Text = NewLicenseID.ToString();

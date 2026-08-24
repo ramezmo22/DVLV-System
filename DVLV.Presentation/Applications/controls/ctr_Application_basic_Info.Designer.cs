@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.controlls
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.controlls
 {
     partial class ctr_Application_basic_Info
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -103,7 +105,7 @@
             // 
             // pictureBox8
             // 
-            pictureBox8.Image = Properties.Resources.User_32__2;
+            pictureBox8.Image = Resources.User_32__2;
             pictureBox8.Location = new Point(620, 99);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(32, 32);
@@ -112,7 +114,7 @@
             // 
             // pictureBox7
             // 
-            pictureBox7.Image = Properties.Resources.Calendar_32;
+            pictureBox7.Image = Resources.Calendar_32;
             pictureBox7.Location = new Point(620, 65);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(32, 32);
@@ -121,7 +123,7 @@
             // 
             // pictureBox6
             // 
-            pictureBox6.Image = Properties.Resources.Calendar_32;
+            pictureBox6.Image = Resources.Calendar_32;
             pictureBox6.Location = new Point(620, 30);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(32, 32);
@@ -130,7 +132,7 @@
             // 
             // pictureBox5
             // 
-            pictureBox5.Image = Properties.Resources.Person_32;
+            pictureBox5.Image = Resources.Person_32;
             pictureBox5.Location = new Point(99, 165);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(32, 32);
@@ -139,7 +141,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = Properties.Resources.ApplicationType;
+            pictureBox4.Image = Resources.ApplicationType;
             pictureBox4.Location = new Point(99, 130);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(32, 32);
@@ -148,7 +150,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.money_321;
+            pictureBox3.Image = Resources.money_321;
             pictureBox3.Location = new Point(99, 99);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(32, 32);
@@ -157,7 +159,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.Number_32;
+            pictureBox2.Image = Resources.Number_32;
             pictureBox2.Location = new Point(99, 65);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(32, 32);
@@ -166,7 +168,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Number_32;
+            pictureBox1.Image = Resources.Number_32;
             pictureBox1.Location = new Point(99, 30);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(32, 32);

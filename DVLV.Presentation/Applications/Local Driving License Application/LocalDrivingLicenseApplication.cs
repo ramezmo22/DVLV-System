@@ -393,9 +393,9 @@ namespace DVLV.UI
         {
             int LDLAppID = GetLocalDrivingLicenseApplicationIDFromGrid();
             (int PassedTests, string Status) = GetPassedTestsAndStatusFromGrid();
-            if(Status=="New")
+            if (Status == "New")
             {
-                if(Convert.ToInt16(PassedTests)<3)
+                if (Convert.ToInt16(PassedTests) < 3)
                 {
                     Form frmUpdateLoccalDrivingLicenseApplcaition = new New_Local_Driving_License_Application(LDLAppID);
                     frmUpdateLoccalDrivingLicenseApplcaition.ShowDialog();
@@ -408,11 +408,11 @@ namespace DVLV.UI
                 }
                 Grid_Initialize();
             }
-            else if(Status=="Completed")
+            else if (Status == "Completed")
             {
                 MessageBox.Show("You can't edit this application because he already Has a license  .", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if(Status=="Cancelled")
+            else if (Status == "Cancelled")
             {
                 MessageBox.Show("You can't edit this application because It is cancelled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

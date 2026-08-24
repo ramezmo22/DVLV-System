@@ -48,18 +48,18 @@ namespace DVLV.UI
             errorProvider.SetError(textBox, "");
         }
 
-        public static void PhoneNumberValidation(TextBox textBox,ErrorProvider errorProvider)
+        public static void PhoneNumberValidation(TextBox textBox, ErrorProvider errorProvider)
         {
-            foreach(char c in textBox.Text)
+            foreach (char c in textBox.Text)
             {
-                if(!char.IsDigit(c))
+                if (!char.IsDigit(c))
                 {
-                 
+
                     errorProvider.SetError(textBox, "You can just enter numbers !");
                     textBox.Focus();
                     textBox.Text = RemoveSelectedChar(textBox.Text, c);
-                    
-                   // return;
+
+                    // return;
                 }
                 else
                 {
@@ -72,7 +72,14 @@ namespace DVLV.UI
         {
             return new string(s1.Where(ch => ch != c1).ToArray());
         }
-
+        private static void AllowNumbersOnly(object sender, KeyPressEventArgs e)
+        {
+            // السماح فقط بالأرقام
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
     }
 }

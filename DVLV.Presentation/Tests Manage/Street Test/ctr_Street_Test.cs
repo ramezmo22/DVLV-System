@@ -25,7 +25,7 @@ namespace DVLV.UI.Tests_Manage.Street_Test
             this.Mood = Mood;
             this.DrivingLicenseApplicationID = DrivingLicenseApplicationID;
             //Gitting Data From BLL->DAL
-            (string DclassName, string Name, int Trials, int Fees) = LocalDrivingLicenseApplicationBLL.GetApplicationDataForScheduleTest(DrivingLicenseApplicationID,3);
+            (string DclassName, string Name, int Trials, int Fees) = LocalDrivingLicenseApplicationBLL.GetApplicationDataForScheduleTest(DrivingLicenseApplicationID, 3);
             lbl_DrivingLicenseApplicationID.Text = this.DrivingLicenseApplicationID.ToString();
             lbl_LicenseClass.Text = DclassName;
             lbl_Name.Text = Name;

@@ -1,5 +1,6 @@
 using DVLV.BLL;
 using DVLV.DAL;
+using DVLV.UI;
 using DVLV.UI.Properties;
 using System;
 using System.Collections.Generic;
@@ -27,16 +28,16 @@ namespace DVLV.UI.Detains
 
             if (licenseData != null)
             {
-                lbl_Class.Text = licenseData.ClassName;             
-                lbl_Name.Text = licenseData.FullName;               
+                lbl_Class.Text = licenseData.ClassName;
+                lbl_Name.Text = licenseData.FullName;
                 lbl_LicenseID.Text = licenseData.LicenseID.ToString();
                 lbl_National_Number.Text = licenseData.NationalNumber;
-                lbl_Gendar.Text = licenseData.Gender;               
-                lbl_Issue_Date.Text = licenseData.IssueDate;       
-                lbl_Issue_Reason.Text = licenseData.IssueReason;      
-                lbl_Notes.Text = licenseData.Notes;                  
-                lbl_IsActive.Text = licenseData.IsActive;           
-                lbl_Date_Of_Birth.Text = licenseData.DateOfBirth;   
+                lbl_Gendar.Text = licenseData.Gender;
+                lbl_Issue_Date.Text = licenseData.IssueDate;
+                lbl_Issue_Reason.Text = licenseData.IssueReason;
+                lbl_Notes.Text = licenseData.Notes;
+                lbl_IsActive.Text = licenseData.IsActive;
+                lbl_Date_Of_Birth.Text = licenseData.DateOfBirth;
                 lbl_Driver_ID.Text = licenseData.DriverID.ToString();
                 lbl_Expitration_Date.Text = licenseData.ExpirationDate;
                 lbl_Is_Detained.Text = licenseData.IsDetained;

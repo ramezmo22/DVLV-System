@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI
 {
     partial class List_Test_Types
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -63,7 +65,7 @@
             // 
             // editToolStripMenuItem
             // 
-            editToolStripMenuItem.Image = Properties.Resources.edit_32;
+            editToolStripMenuItem.Image = Resources.edit_32;
             editToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new Size(113, 38);
@@ -83,7 +85,7 @@
             // btn_Close
             // 
             btn_Close.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(672, 607);
             btn_Close.Name = "btn_Close";
@@ -106,7 +108,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.TestType_512;
+            pictureBox1.Image = Resources.TestType_512;
             pictureBox1.Location = new Point(286, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(222, 210);

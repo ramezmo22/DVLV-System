@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Detains
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Detains
 {
     partial class List_Detained_Licenses
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -68,7 +70,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Detain_512;
+            pictureBox1.Image = Resources.Detain_512;
             pictureBox1.Location = new Point(528, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(307, 182);
@@ -89,7 +91,7 @@
             // 
             // btn_Detained
             // 
-            btn_Detained.Image = Properties.Resources.Detain_64;
+            btn_Detained.Image = Resources.Detain_64;
             btn_Detained.Location = new Point(1239, 233);
             btn_Detained.Name = "btn_Detained";
             btn_Detained.Size = new Size(73, 71);
@@ -99,7 +101,7 @@
             // 
             // btn_Release
             // 
-            btn_Release.Image = Properties.Resources.Release_Detained_License_64;
+            btn_Release.Image = Resources.Release_Detained_License_64;
             btn_Release.Location = new Point(1160, 233);
             btn_Release.Name = "btn_Release";
             btn_Release.Size = new Size(73, 71);
@@ -140,7 +142,7 @@
             // 
             // btn_Close
             // 
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(1194, 660);
             btn_Close.Name = "btn_Close";
@@ -168,7 +170,7 @@
             // 
             // showPersonDetailsToolStripMenuItem
             // 
-            showPersonDetailsToolStripMenuItem.Image = Properties.Resources.PersonDetails_32;
+            showPersonDetailsToolStripMenuItem.Image = Resources.PersonDetails_32;
             showPersonDetailsToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             showPersonDetailsToolStripMenuItem.Name = "showPersonDetailsToolStripMenuItem";
             showPersonDetailsToolStripMenuItem.Size = new Size(241, 38);
@@ -177,7 +179,7 @@
             // 
             // showLicenseDetailsToolStripMenuItem
             // 
-            showLicenseDetailsToolStripMenuItem.Image = Properties.Resources.License_View_32;
+            showLicenseDetailsToolStripMenuItem.Image = Resources.License_View_32;
             showLicenseDetailsToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             showLicenseDetailsToolStripMenuItem.Name = "showLicenseDetailsToolStripMenuItem";
             showLicenseDetailsToolStripMenuItem.Size = new Size(241, 38);
@@ -186,7 +188,7 @@
             // 
             // shoePersonLicenseHistoryToolStripMenuItem
             // 
-            shoePersonLicenseHistoryToolStripMenuItem.Image = Properties.Resources.PersonLicenseHistory_32;
+            shoePersonLicenseHistoryToolStripMenuItem.Image = Resources.PersonLicenseHistory_32;
             shoePersonLicenseHistoryToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             shoePersonLicenseHistoryToolStripMenuItem.Name = "shoePersonLicenseHistoryToolStripMenuItem";
             shoePersonLicenseHistoryToolStripMenuItem.Size = new Size(241, 38);
@@ -195,7 +197,7 @@
             // 
             // releaseDetainedLicenseToolStripMenuItem
             // 
-            releaseDetainedLicenseToolStripMenuItem.Image = Properties.Resources.Release_Detained_License_32;
+            releaseDetainedLicenseToolStripMenuItem.Image = Resources.Release_Detained_License_32;
             releaseDetainedLicenseToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             releaseDetainedLicenseToolStripMenuItem.Name = "releaseDetainedLicenseToolStripMenuItem";
             releaseDetainedLicenseToolStripMenuItem.Size = new Size(241, 38);

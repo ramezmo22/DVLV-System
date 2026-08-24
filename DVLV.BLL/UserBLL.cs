@@ -139,103 +139,10 @@ namespace DVLV.BLL
             UserName = 4,
             IsActive=5
         };
-        public static DataTable LoadDataToGridView(int FilterationNumber = 0, string filterValue = "")
+        public static DataTable LoadDataToGridView()
         {
-            // تحميل البيانات من المصدر
-            DataTable filteredUserData = UsersDAL.GetUsersData();
-
-            // تحديد نوع التصفية
-            enFilterationType filter = (enFilterationType)FilterationNumber;
-
-            switch (filter)
-            {
-                case enFilterationType.None:
-                    // إذا لم يتم تحديد أي تصفية، يتم إرجاع البيانات كما هي
-                    return filteredUserData;
-
-                case enFilterationType.UserID:
-                    // تصفية بناءً على UserID (رقمي)
-                    return FilterDataTable(filteredUserData, "UserID", filterValue, isInt: true);
-
-                case enFilterationType.PersonID:
-                    // تصفية بناءً على PersonID (رقمي)
-                    return FilterDataTable(filteredUserData, "PersonID", filterValue, isInt: true);
-
-                case enFilterationType.FullName:
-                    // تصفية بناءً على FullName (نصي، باستخدام LIKE)
-                    return FilterDataTable(filteredUserData, "FullName", filterValue, useLike: true);
-
-                case enFilterationType.UserName:
-                    // تصفية بناءً على UserName (نصي، باستخدام LIKE)
-                    return FilterDataTable(filteredUserData, "UserName", filterValue, useLike: true);
-
-                case enFilterationType.IsActive:
-                    return FilterDataTable(filteredUserData, "IsActive", filterValue);//all,Yes,No
-                default:
-                    // إذا كان نوع التصفية غير معروف، يتم إرجاع البيانات كما هي
-                    return filteredUserData;
-            }
+            return UsersDAL.GetUsersData();
         }
-        private static DataTable FilterDataTable(DataTable data, string columnName, string value, bool isInt = false, bool useLike = false)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return data; // إذا لم يتم تحديد قيمة، يتم إرجاع الجدول الأصلي
-            }
-
-            // Normalize column names to remove spaces
-            string normalizedColumnName = columnName.Replace(" ", "");
-            foreach (DataColumn column in data.Columns)
-            {
-                if (column.ColumnName.Replace(" ", "").Equals(normalizedColumnName, StringComparison.OrdinalIgnoreCase))
-                {
-                    columnName = column.ColumnName;
-                    break;
-                }
-            }
-
-            string filteringQuery;
-
-            if (isInt)
-            {
-                filteringQuery = $"[{columnName}] = {value}"; // Escaping column names with brackets
-            }
-            else if (useLike)
-            {
-                filteringQuery = $"[{columnName}] LIKE '%{value}%'"; // Escaping column names with brackets
-            }
-            else
-            {
-                filteringQuery = $"[{columnName}] = '{value}'"; // Escaping column names with brackets
-            }
-            if (columnName == "IsActive")
-            {
-                if (value == "All")
-                {
-                    return data; // إذا كانت القيمة "All"، يتم إرجاع الجدول الأصلي بدون تصفية
-                }
-                if (value == "Yes")
-                {
-                    filteringQuery = $"{columnName} = 'True'"; // تصفية القيم النشطة
-                }
-                if (value == "No")
-                {
-                    filteringQuery = $"{columnName} = 'False'"; // تصفية القيم غير النشطة
-                }
-            }
-
-            DataRow[] filteringRows = data.Select(filteringQuery); // تصفية الصفوف بناءً على الشرط
-            DataTable filteredTable = data.Clone(); // إنشاء نسخة من هيكل الجدول
-
-            foreach (DataRow row in filteringRows)
-            {
-                filteredTable.ImportRow(row); // نسخ الصفوف المصفاة إلى الجدول الجديد
-            }
-
-            return filteredTable; // إرجاع الجدول المصفى
-        }
-
-
         public static bool ISPersonAUser(int PersonID)
         {
             if (CheckIfPersonIsAUser(PersonID))

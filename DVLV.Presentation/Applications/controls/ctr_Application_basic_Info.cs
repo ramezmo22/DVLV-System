@@ -1,11 +1,11 @@
-﻿using System;
+﻿using DVLV.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DVLV.BLL;
 namespace DVLV.UI.controlls
 {
     public partial class ctr_Application_basic_Info : UserControl
@@ -43,7 +43,7 @@ namespace DVLV.UI.controlls
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             int personID = PeopleBLL.GetPersonIDByApplicationID(ApplicationID);
-            if(personID!=-1)
+            if (personID != -1)
             {
                 Form frmPersonInfo = new PersonDetails(personID);
                 frmPersonInfo.ShowDialog();

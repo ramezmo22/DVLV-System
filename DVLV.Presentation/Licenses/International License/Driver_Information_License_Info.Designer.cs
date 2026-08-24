@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Licenses.International_License
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Licenses.International_License
 {
     partial class Driver_Information_License_Info
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -40,7 +42,7 @@
             // btn_Close
             // 
             btn_Close.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(710, 442);
             btn_Close.Name = "btn_Close";
@@ -64,7 +66,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox1.Image = Properties.Resources.LicenseView_4001;
+            pictureBox1.Image = Resources.LicenseView_4001;
             pictureBox1.Location = new Point(320, 12);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
@@ -76,7 +78,7 @@
             // pictureBox2
             // 
             pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox2.Image = Properties.Resources.International_32;
+            pictureBox2.Image = Resources.International_32;
             pictureBox2.Location = new Point(393, 125);
             pictureBox2.Margin = new Padding(4, 3, 4, 3);
             pictureBox2.Name = "pictureBox2";

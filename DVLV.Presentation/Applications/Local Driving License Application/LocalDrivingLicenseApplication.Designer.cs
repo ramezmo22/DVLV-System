@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI
 {
     partial class LocalDrivingLicenseApplications
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -66,7 +68,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Applications;
+            pictureBox1.Image = Resources.Applications;
             pictureBox1.Location = new Point(524, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(235, 189);
@@ -76,7 +78,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.Local_32;
+            pictureBox2.Image = Resources.Local_32;
             pictureBox2.Location = new Point(586, 149);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(34, 26);
@@ -118,7 +120,7 @@
             // 
             // showApplicationDetailsToolStripMenuItem
             // 
-            showApplicationDetailsToolStripMenuItem.Image = Properties.Resources.PersonDetails_32;
+            showApplicationDetailsToolStripMenuItem.Image = Resources.PersonDetails_32;
             showApplicationDetailsToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             showApplicationDetailsToolStripMenuItem.Name = "showApplicationDetailsToolStripMenuItem";
             showApplicationDetailsToolStripMenuItem.Size = new Size(262, 38);
@@ -131,7 +133,7 @@
             // 
             // editApplicationToolStripMenuItem
             // 
-            editApplicationToolStripMenuItem.Image = Properties.Resources.edit_32;
+            editApplicationToolStripMenuItem.Image = Resources.edit_32;
             editApplicationToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             editApplicationToolStripMenuItem.Name = "editApplicationToolStripMenuItem";
             editApplicationToolStripMenuItem.Size = new Size(262, 38);
@@ -140,7 +142,7 @@
             // 
             // deleteApplicationToolStripMenuItem
             // 
-            deleteApplicationToolStripMenuItem.Image = Properties.Resources.Delete_32_2;
+            deleteApplicationToolStripMenuItem.Image = Resources.Delete_32_2;
             deleteApplicationToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             deleteApplicationToolStripMenuItem.Name = "deleteApplicationToolStripMenuItem";
             deleteApplicationToolStripMenuItem.Size = new Size(262, 38);
@@ -154,7 +156,7 @@
             // 
             // cancelApplicationToolStripMenuItem
             // 
-            cancelApplicationToolStripMenuItem.Image = Properties.Resources.Delete_32;
+            cancelApplicationToolStripMenuItem.Image = Resources.Delete_32;
             cancelApplicationToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             cancelApplicationToolStripMenuItem.Name = "cancelApplicationToolStripMenuItem";
             cancelApplicationToolStripMenuItem.Size = new Size(262, 38);
@@ -169,7 +171,7 @@
             // sechduleTestsToolStripMenuItem
             // 
             sechduleTestsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { schedualVisionTestToolStripMenuItem, SchedualWritenTestToolStripMenuItem, schedualStreetTestToolStripMenuItem });
-            sechduleTestsToolStripMenuItem.Image = Properties.Resources.Schedule_Test_32;
+            sechduleTestsToolStripMenuItem.Image = Resources.Schedule_Test_32;
             sechduleTestsToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             sechduleTestsToolStripMenuItem.Name = "sechduleTestsToolStripMenuItem";
             sechduleTestsToolStripMenuItem.Size = new Size(262, 38);
@@ -177,7 +179,7 @@
             // 
             // schedualVisionTestToolStripMenuItem
             // 
-            schedualVisionTestToolStripMenuItem.Image = Properties.Resources.Vision_Test_32;
+            schedualVisionTestToolStripMenuItem.Image = Resources.Vision_Test_32;
             schedualVisionTestToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             schedualVisionTestToolStripMenuItem.Name = "schedualVisionTestToolStripMenuItem";
             schedualVisionTestToolStripMenuItem.Size = new Size(200, 38);
@@ -186,7 +188,7 @@
             // 
             // SchedualWritenTestToolStripMenuItem
             // 
-            SchedualWritenTestToolStripMenuItem.Image = Properties.Resources.Written_Test_32_Sechdule;
+            SchedualWritenTestToolStripMenuItem.Image = Resources.Written_Test_32_Sechdule;
             SchedualWritenTestToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             SchedualWritenTestToolStripMenuItem.Name = "SchedualWritenTestToolStripMenuItem";
             SchedualWritenTestToolStripMenuItem.Size = new Size(200, 38);
@@ -195,7 +197,7 @@
             // 
             // schedualStreetTestToolStripMenuItem
             // 
-            schedualStreetTestToolStripMenuItem.Image = Properties.Resources.Street_Test_32;
+            schedualStreetTestToolStripMenuItem.Image = Resources.Street_Test_32;
             schedualStreetTestToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             schedualStreetTestToolStripMenuItem.Name = "schedualStreetTestToolStripMenuItem";
             schedualStreetTestToolStripMenuItem.Size = new Size(200, 38);
@@ -209,7 +211,7 @@
             // 
             // issueDrivingLicenseFirstTimeToolStripMenuItem
             // 
-            issueDrivingLicenseFirstTimeToolStripMenuItem.Image = Properties.Resources.IssueDrivingLicense_32;
+            issueDrivingLicenseFirstTimeToolStripMenuItem.Image = Resources.IssueDrivingLicense_32;
             issueDrivingLicenseFirstTimeToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             issueDrivingLicenseFirstTimeToolStripMenuItem.Name = "issueDrivingLicenseFirstTimeToolStripMenuItem";
             issueDrivingLicenseFirstTimeToolStripMenuItem.Size = new Size(262, 38);
@@ -223,7 +225,7 @@
             // 
             // showLicenseToolStripMenuItem
             // 
-            showLicenseToolStripMenuItem.Image = Properties.Resources.License_View_32;
+            showLicenseToolStripMenuItem.Image = Resources.License_View_32;
             showLicenseToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             showLicenseToolStripMenuItem.Name = "showLicenseToolStripMenuItem";
             showLicenseToolStripMenuItem.Size = new Size(262, 38);
@@ -237,7 +239,7 @@
             // 
             // showPersonalLicenseHistoryToolStripMenuItem
             // 
-            showPersonalLicenseHistoryToolStripMenuItem.Image = Properties.Resources.PersonLicenseHistory_32;
+            showPersonalLicenseHistoryToolStripMenuItem.Image = Resources.PersonLicenseHistory_32;
             showPersonalLicenseHistoryToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             showPersonalLicenseHistoryToolStripMenuItem.Name = "showPersonalLicenseHistoryToolStripMenuItem";
             showPersonalLicenseHistoryToolStripMenuItem.Size = new Size(262, 38);
@@ -295,7 +297,7 @@
             // 
             // btn_AddNewApplication
             // 
-            btn_AddNewApplication.Image = Properties.Resources.New_Application_64;
+            btn_AddNewApplication.Image = Resources.New_Application_64;
             btn_AddNewApplication.Location = new Point(1180, 224);
             btn_AddNewApplication.Name = "btn_AddNewApplication";
             btn_AddNewApplication.Size = new Size(76, 80);
@@ -306,7 +308,7 @@
             // btn_Close
             // 
             btn_Close.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(1137, 665);
             btn_Close.Name = "btn_Close";

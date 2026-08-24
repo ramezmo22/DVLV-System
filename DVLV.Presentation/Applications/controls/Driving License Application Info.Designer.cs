@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.controlls
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.controlls
 {
     partial class Driving_License_Application_Info
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -71,7 +73,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = Properties.Resources.PassedTests_32;
+            pictureBox4.Image = Resources.PassedTests_32;
             pictureBox4.Location = new Point(523, 84);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(32, 32);
@@ -80,7 +82,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.License_Type_321;
+            pictureBox3.Image = Resources.License_Type_321;
             pictureBox3.Location = new Point(523, 32);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(32, 32);
@@ -89,7 +91,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.License_View_321;
+            pictureBox2.Image = Resources.License_View_321;
             pictureBox2.Location = new Point(118, 84);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(32, 32);
@@ -98,7 +100,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Number_32;
+            pictureBox1.Image = Resources.Number_32;
             pictureBox1.Location = new Point(118, 32);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(32, 32);

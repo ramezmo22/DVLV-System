@@ -14,15 +14,15 @@ namespace DVLV.UI.Tests_Manage
         public int DrivingLicenseApplicationID = -1;
         public int AppointmentID = -1;
         public enum enTestType { enVisionTest = 1, enWrittenTest = 2, enStreetTest = 3 };
-        public enum enTestTypeMood { enAddNew=1, enEdit=2, enReTake=3 ,enEditLocked=4}
-        public Schedule_Test(int DrivingLicenseApplicationID, enTestType type,enTestTypeMood typeMood,int AppoinrmentID=-1)
+        public enum enTestTypeMood { enAddNew = 1, enEdit = 2, enReTake = 3, enEditLocked = 4 }
+        public Schedule_Test(int DrivingLicenseApplicationID, enTestType type, enTestTypeMood typeMood, int AppoinrmentID = -1)
         {
             this.AppointmentID = AppoinrmentID;
             this.DrivingLicenseApplicationID = DrivingLicenseApplicationID;
             InitializeComponent();
-            LoudData(type,typeMood);
+            LoudData(type, typeMood);
         }
-        public void LoudData(enTestType type,enTestTypeMood TypeMood)
+        public void LoudData(enTestType type, enTestTypeMood TypeMood)
         {
             switch (type)
             {
@@ -36,11 +36,11 @@ namespace DVLV.UI.Tests_Manage
                         {
                             ctr_Vision_Test_Setter1.LoudData(DrivingLicenseApplicationID, ctr_Vision_Test_Setter.enMood.enAddNew);
                         }
-                        else if(TypeMood==enTestTypeMood.enEdit)
+                        else if (TypeMood == enTestTypeMood.enEdit)
                         {
-                            ctr_Vision_Test_Setter1.LoudData(DrivingLicenseApplicationID, ctr_Vision_Test_Setter.enMood.enEdit,AppointmentID); 
+                            ctr_Vision_Test_Setter1.LoudData(DrivingLicenseApplicationID, ctr_Vision_Test_Setter.enMood.enEdit, AppointmentID);
                         }
-                        else if(TypeMood==enTestTypeMood.enEditLocked)
+                        else if (TypeMood == enTestTypeMood.enEditLocked)
                         {
                             ctr_Vision_Test_Setter1.LoudData(DrivingLicenseApplicationID, ctr_Vision_Test_Setter.enMood.enLockedEdit, AppointmentID);
                         }
@@ -59,11 +59,11 @@ namespace DVLV.UI.Tests_Manage
                         }
                         else if (TypeMood == enTestTypeMood.enEdit)
                         {
-                            written_Test_Setter1.LoudData(DrivingLicenseApplicationID, Written_Test_Setter.enMood.enEdit,AppointmentID);
+                            written_Test_Setter1.LoudData(DrivingLicenseApplicationID, Written_Test_Setter.enMood.enEdit, AppointmentID);
                         }
                         else if (TypeMood == enTestTypeMood.enEditLocked)
                         {
-                            written_Test_Setter1.LoudData(DrivingLicenseApplicationID, Written_Test_Setter.enMood.enLockedEdit,AppointmentID);
+                            written_Test_Setter1.LoudData(DrivingLicenseApplicationID, Written_Test_Setter.enMood.enLockedEdit, AppointmentID);
                         }
                         break;
                     }

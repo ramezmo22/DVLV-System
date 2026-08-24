@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Applications_Manage
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Applications_Manage
 {
     partial class Replacement_For_Damaged_or_Lost_License
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -134,7 +136,7 @@
             // 
             // btn_Close
             // 
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(491, 626);
             btn_Close.Name = "btn_Close";
@@ -147,7 +149,7 @@
             // btn_Replace_License
             // 
             btn_Replace_License.Enabled = false;
-            btn_Replace_License.Image = Properties.Resources.Renew_Driving_License_322;
+            btn_Replace_License.Image = Resources.Renew_Driving_License_322;
             btn_Replace_License.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Replace_License.Location = new Point(615, 626);
             btn_Replace_License.Name = "btn_Replace_License";

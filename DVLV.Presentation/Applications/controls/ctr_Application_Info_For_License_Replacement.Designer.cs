@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI.Applications_Manage
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI.Applications_Manage
 {
     partial class ctr_Application_Info_For_License_Replacement
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -86,7 +88,7 @@
             // 
             // pictureBox11
             // 
-            pictureBox11.Image = Properties.Resources.Renew_Driving_License_321;
+            pictureBox11.Image = Resources.Renew_Driving_License_321;
             pictureBox11.Location = new Point(542, 23);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(32, 32);
@@ -96,7 +98,7 @@
             // 
             // pictureBox10
             // 
-            pictureBox10.Image = Properties.Resources.LocalDriving_License;
+            pictureBox10.Image = Resources.LocalDriving_License;
             pictureBox10.Location = new Point(542, 64);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(32, 32);
@@ -106,7 +108,7 @@
             // 
             // pictureBox8
             // 
-            pictureBox8.Image = Properties.Resources.User_32__2;
+            pictureBox8.Image = Resources.User_32__2;
             pictureBox8.Location = new Point(542, 102);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(32, 32);
@@ -116,7 +118,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = Properties.Resources.money_32;
+            pictureBox4.Image = Resources.money_32;
             pictureBox4.Location = new Point(155, 102);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(32, 32);
@@ -126,7 +128,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.Calendar_32;
+            pictureBox2.Image = Resources.Calendar_32;
             pictureBox2.Location = new Point(155, 64);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(32, 32);
@@ -136,7 +138,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Number_32;
+            pictureBox1.Image = Resources.Number_32;
             pictureBox1.Location = new Point(155, 23);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(32, 32);

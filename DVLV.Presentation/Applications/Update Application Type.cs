@@ -16,7 +16,7 @@ namespace DVLV.UI
         private int _ApplicationType { set; get; }
         public Update_Application_Type(int ApplicationType)
         {
-            this._ApplicationType= ApplicationType;
+            this._ApplicationType = ApplicationType;
             InitializeComponent();
             LoudApplicationData();
         }
@@ -26,7 +26,7 @@ namespace DVLV.UI
             int fees = -1;
             string Title = "";
             ApplicationTypesBLL.GetType(ref id, ref Title, ref fees);
-            if (id!=-1||fees!=-1||Title!="")
+            if (id != -1 || fees != -1 || Title != "")
             {
 
                 lbl_ID.Text = id.ToString();
@@ -70,7 +70,7 @@ namespace DVLV.UI
             {
                 if (ApplicationTypesBLL.UpdateApplicationType(_ApplicationType, txt_Application_Title.Text, fees))
                 {
-                    if(MessageBox.Show("Updated Sucsussfuly","info",MessageBoxButtons.OK)==DialogResult.OK)
+                    if (MessageBox.Show("Updated Sucsussfuly", "info", MessageBoxButtons.OK) == DialogResult.OK)
                     {
                         this.Close();
                     }
@@ -82,6 +82,6 @@ namespace DVLV.UI
             }
         }
 
-     
+
     }
 }

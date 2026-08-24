@@ -24,7 +24,8 @@ namespace DVLV.UI.Detains
             lbl_License_ID.Text = _LicesnesID.ToString();
         }
         public bool Detain_Save()
-        {   if (!string.IsNullOrEmpty(msk_Fine_Fees.Text) && Convert.ToInt16(msk_Fine_Fees.Text) > 0)
+        {
+            if (!string.IsNullOrEmpty(msk_Fine_Fees.Text) && Convert.ToInt16(msk_Fine_Fees.Text) > 0)
             {
                 if (_LicesnesID != -1)
                 {

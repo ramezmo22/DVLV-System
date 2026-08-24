@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI
 {
     partial class LoginScreen
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -59,7 +61,7 @@
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.Lavender;
-            pictureBox2.Image = Properties.Resources.correct_the_small_ty;
+            pictureBox2.Image = Resources.correct_the_small_ty;
             pictureBox2.Location = new Point(111, 38);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(225, 197);
@@ -129,7 +131,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.Person_32;
+            pictureBox3.Image = Resources.Person_32;
             pictureBox3.Location = new Point(624, 192);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(29, 27);
@@ -139,7 +141,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = Properties.Resources.Number_32;
+            pictureBox4.Image = Resources.Number_32;
             pictureBox4.Location = new Point(624, 233);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(29, 27);
@@ -152,7 +154,7 @@
             btn_Close.BackColor = Color.DarkSlateGray;
             btn_Close.FlatAppearance.BorderSize = 0;
             btn_Close.FlatStyle = FlatStyle.Flat;
-            btn_Close.Image = Properties.Resources.closeBlack32;
+            btn_Close.Image = Resources.closeBlack32;
             btn_Close.Location = new Point(877, 3);
             btn_Close.Name = "btn_Close";
             btn_Close.Size = new Size(35, 32);
@@ -179,7 +181,7 @@
             btn_Login.FlatAppearance.BorderColor = Color.Lavender;
             btn_Login.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_Login.ForeColor = Color.Lavender;
-            btn_Login.Image = Properties.Resources.sign_in_32;
+            btn_Login.Image = Resources.sign_in_32;
             btn_Login.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Login.Location = new Point(759, 298);
             btn_Login.Name = "btn_Login";

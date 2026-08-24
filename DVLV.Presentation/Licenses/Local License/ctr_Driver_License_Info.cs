@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLV.UI.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,10 +22,10 @@ namespace DVLV.UI.Licenses
         public void LoudControlData(int ApplicationID)
         {
             this.ApplicationID = ApplicationID;
-            if(ApplicationID!=-1)
+            if (ApplicationID != -1)
             {
-                this.LicenseID =BLL.LicenseBLL.GetLicenseIDByApplicationID(ApplicationID);
-                if(LicenseID!=-1)
+                this.LicenseID = BLL.LicenseBLL.GetLicenseIDByApplicationID(ApplicationID);
+                if (LicenseID != -1)
                 {
                     string ClassName = string.Empty;
                     string Fullname = string.Empty;
@@ -39,19 +40,19 @@ namespace DVLV.UI.Licenses
                     int DriverID = -1;
                     DateTime ExpirationDate = DateTime.Now;
                     string ImagePath = string.Empty;
-                    
+
                     BLL.DriverBLL.GetDriverinfo(
-                        ref ClassName, 
-                        ref Fullname, 
-                        ref LicenseID, 
-                        ref NationalNumber, 
-                        ref Gendor, 
-                        ref IssueDate, 
-                        ref IssueReason, 
-                        ref Notes, 
-                        ref isActive, 
-                        ref DateOfBirth, 
-                        ref DriverID, 
+                        ref ClassName,
+                        ref Fullname,
+                        ref LicenseID,
+                        ref NationalNumber,
+                        ref Gendor,
+                        ref IssueDate,
+                        ref IssueReason,
+                        ref Notes,
+                        ref isActive,
+                        ref DateOfBirth,
+                        ref DriverID,
                         ref ExpirationDate,
                         ref ImagePath);
 
@@ -62,7 +63,7 @@ namespace DVLV.UI.Licenses
                     lbl_National_Number.Text = NationalNumber;
                     lbl_Gender.Text = Gendor == 0 ? "Male" : "Female";
                     lbl_Issue_Date.Text = IssueDate.ToString("dd/MM/yyyy");
-                    switch(IssueReason)
+                    switch (IssueReason)
                     {
                         case 1:
                             {
@@ -84,7 +85,7 @@ namespace DVLV.UI.Licenses
                                 lbl_Issue_Reason.Text = "Replacement for Lost";
                                 break;
                             }
-                      
+
                     }
                     lbl_IsActive.Text = isActive ? "Yes" : "No";
                     lbl_Date_Of_Birth.Text = DateOfBirth.ToString("dd/MM/yyyy");
@@ -97,9 +98,9 @@ namespace DVLV.UI.Licenses
                     }
                     else
                     {
-                        ptb_Person_Image.Image = Properties.Resources.Male_512;
+                        ptb_Person_Image.Image = Resources.Male_512;
                     }
-                    lbl_Is_Detained.Text= BLL.LicenseBLL.IsLicenseDetaind(this.LicenseID)?"Yes":"NO";
+                    lbl_Is_Detained.Text = BLL.LicenseBLL.IsLicenseDetaind(this.LicenseID) ? "Yes" : "NO";
                     //handel Notes
                     if (string.IsNullOrEmpty(Notes))
                         lbl_Notes.Text = "No Notes";
@@ -109,6 +110,6 @@ namespace DVLV.UI.Licenses
             }
         }
 
-        
+
     }
 }

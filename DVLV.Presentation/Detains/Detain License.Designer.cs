@@ -1,4 +1,6 @@
-﻿namespace DVLV.UI
+﻿using DVLV.UI.Properties;
+
+namespace DVLV.UI
 {
     partial class Detain_License
     {
@@ -8,9 +10,9 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any Resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed Resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -61,7 +63,7 @@
             // 
             // btn_Close
             // 
-            btn_Close.Image = Properties.Resources.Close_32;
+            btn_Close.Image = Resources.Close_32;
             btn_Close.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Close.Location = new Point(582, 659);
             btn_Close.Name = "btn_Close";
@@ -74,7 +76,7 @@
             // btn_Detain_License
             // 
             btn_Detain_License.Enabled = false;
-            btn_Detain_License.Image = Properties.Resources.International_32;
+            btn_Detain_License.Image = Resources.International_32;
             btn_Detain_License.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Detain_License.Location = new Point(706, 659);
             btn_Detain_License.Name = "btn_Detain_License";

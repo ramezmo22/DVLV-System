@@ -23,15 +23,15 @@ namespace DVLV.UI.Licenses
             //Form Louding 
             InitializeComponent();
             //control louding
-            driving_License_Application_Info1.LoudControlData(LocalDrivingLicenseApplcaitionID,controlls.Driving_License_Application_Info.enLicenseType.enLocal);
+            driving_License_Application_Info1.LoudControlData(LocalDrivingLicenseApplcaitionID, controlls.Driving_License_Application_Info.enLicenseType.enLocal);
             ctr_Application_basic_Info1.loudData(ApplcaitionID);
         }
 
         private void btn_License_Issue_Click(object sender, EventArgs e)
         {
             BLL.FirstTimeDriverLicenseBLL FirstTimeLicense = new FirstTimeDriverLicenseBLL(LocalDrivingLicenseApplcaitionID);
-           int NewLicenseID= FirstTimeLicense.AddNewLicense(txt_Notes.Text.ToString());
-            if(NewLicenseID!=-1)
+            int NewLicenseID = FirstTimeLicense.AddNewLicense(txt_Notes.Text.ToString());
+            if (NewLicenseID != -1)
             {
                 MessageBox.Show(" Successfully adding a new license with ID = " + NewLicenseID.ToString() + ".", "Successful ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
