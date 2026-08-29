@@ -24,11 +24,6 @@ namespace DVLV.Presentation
             InitializeComponent();
         }
 
-        private void applicationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void accountSettingsToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
         {
 

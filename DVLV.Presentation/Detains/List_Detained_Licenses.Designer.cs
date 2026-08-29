@@ -138,7 +138,7 @@ namespace DVLV.UI.Detains
             txt_To_Find.Size = new Size(152, 23);
             txt_To_Find.TabIndex = 7;
             txt_To_Find.Visible = false;
-            txt_To_Find.TextChanged += textBox1_TextChanged;
+            txt_To_Find.TextChanged += txt_To_Find_TextChanged;
             // 
             // btn_Close
             // 

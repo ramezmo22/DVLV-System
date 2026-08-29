@@ -88,7 +88,7 @@ namespace DVLV.Presentation
             applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
             applicationToolStripMenuItem.Size = new Size(194, 68);
             applicationToolStripMenuItem.Text = "Applications";
-            applicationToolStripMenuItem.Click += applicationToolStripMenuItem_Click;
+            //applicationToolStripMenuItem.Click += applicationToolStripMenuItem_Click;
             applicationToolStripMenuItem.MouseDown += accountSettingsToolStripMenuItem_MouseDown;
             // 
             // drivingLicensesServicesToolStripMenuItem

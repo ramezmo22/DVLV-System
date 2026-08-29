@@ -29,76 +29,10 @@ namespace DVLV.BLL
             return DAL.DetainedLicensesDAL.Release_License(LicenseID, ReleaseApplicationID, ReleaseDate, ReleasedByUserID);
         }
 
-        public static DataTable GetAllDetainedLicenses(int FilterMood = 0, string FilterQuery = "")
+        // التعديل صار هنا: دالة نظيفة بدون معاملات لجلب الجدول كاملاً فقط
+        public static DataTable GetAllDetainedLicenses()
         {
-            DataTable DetainedLicenses = DAL.DetainedLicensesDAL.GetAllDetainedLicenses();
-            if (FilterQuery == "")
-                return DetainedLicenses;
-          switch (FilterMood)
-            {
-                case 0:
-                    return DetainedLicenses;
-                case 1:
-                    DetainedLicenses = FilterDetainLicenses(DetainedLicenses, FilterQuery,1);
-                    break;                                            
-                case 2:                                               
-                    DetainedLicenses = FilterDetainLicenses(DetainedLicenses, FilterQuery,2);
-                    break;                                            
-                case 3:                                               
-                    DetainedLicenses = FilterDetainLicenses(DetainedLicenses, FilterQuery,3);
-                    break;                                            
-                case 4:                                              
-                    DetainedLicenses = FilterDetainLicenses(DetainedLicenses, FilterQuery,4);
-                    break;                                            
-                case 5:                                              
-                    DetainedLicenses = FilterDetainLicenses(DetainedLicenses, FilterQuery,5);
-                    break;
-
-            }
-            return DetainedLicenses;
+            return DAL.DetainedLicensesDAL.GetAllDetainedLicenses();
         }
-
-        public static DataTable FilterDetainLicenses(DataTable DetainedLicenses, string FilterQuery, int FilterMood)
-        {
-            DataRow[] rows = null;
-            DataTable Dest = DetainedLicenses.Clone();
-            switch (FilterMood)
-            {
-                case 0:
-                    return DetainedLicenses;
-                case 1:
-                    // Filter by Detain ID
-                    if (int.TryParse(FilterQuery, out int detainID))
-                        rows = DetainedLicenses.Select("DetainID = " + detainID.ToString());
-                    break;
-                case 2:
-                    // Filter by Is Released
-                    if (int.TryParse(FilterQuery, out int isReleased))
-                        rows = DetainedLicenses.Select("IsReleased = " + (isReleased == 1 ? 1 : 0).ToString());
-                    break;
-                case 3:
-                    // Filter by National No.
-                    rows = DetainedLicenses.Select("NationalNo LIKE '%" + FilterQuery.Replace("'", "''") + "%'");
-                    break;
-                case 4:
-                    // Filter by Full Name
-                    rows = DetainedLicenses.Select("[Full Name] LIKE '%" + FilterQuery.Replace("'", "''") + "%'");
-                    break;
-                case 5:
-                    // Filter by Release Application ID
-                    if (int.TryParse(FilterQuery, out int releaseAppID))
-                        rows = DetainedLicenses.Select("ReleaseApplicationID = " + releaseAppID.ToString());
-                    break;
-            }
-
-            if (rows != null)
-            {
-                foreach (DataRow r in rows)
-                    Dest.ImportRow(r);
-            }
-            return Dest;
-        }
-
-
     }
 }

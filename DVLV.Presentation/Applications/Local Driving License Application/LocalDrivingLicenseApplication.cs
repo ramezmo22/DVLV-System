@@ -3,17 +3,16 @@ using DVLV.UI.Licenses;
 using DVLV.UI.Tests_Manage;
 using DVLV.UI.Tests_Manage.VisionTest.Street_Test;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace DVLV.UI
 {
     public partial class LocalDrivingLicenseApplications : Form
     {
+        private DataTable _dtAllLocalApplications;
+
         public LocalDrivingLicenseApplications()
         {
             InitializeComponent();
@@ -21,100 +20,120 @@ namespace DVLV.UI
             cbx_Filter.SelectedIndex = 0;
             txt_Filter.Visible = false;
         }
-        public void Grid_Initialize(int FilterationNumber = 0, string filterValue = "")
+
+        public void Grid_Initialize()
         {
-
-            DataTable GridData = BLL.LocalDrivingLicenseApplicationBLL.LoadDataToGridView(FilterationNumber, filterValue);
-
+            _dtAllLocalApplications = BLL.LocalDrivingLicenseApplicationBLL.GetAllLocalDrivingLicenseApplications();
 
             dgv_Local_Driving_License_Applications.Columns.Clear();
-            dgv_Local_Driving_License_Applications.Columns.Add(new DataGridViewTextBoxColumn() { Name = "LocalDrivingLicenseApplicationID", HeaderText = "L.D.L.AppID", DataPropertyName = "LocalDrivingLicenseApplicationID" });
-            dgv_Local_Driving_License_Applications.Columns.Add(new DataGridViewTextBoxColumn() { Name = "ClassName", HeaderText = "Driving Class", DataPropertyName = "ClassName" });
-            dgv_Local_Driving_License_Applications.Columns.Add(new DataGridViewTextBoxColumn() { Name = "NationalNo", HeaderText = "National No.", DataPropertyName = "NationalNo" });
-            dgv_Local_Driving_License_Applications.Columns.Add(new DataGridViewTextBoxColumn() { Name = "FullName", HeaderText = "Full Name.", DataPropertyName = "FullName", Width = 200 });
-            dgv_Local_Driving_License_Applications.Columns.Add(new DataGridViewTextBoxColumn() { Name = "ApplicationDate", HeaderText = "Application Date", DataPropertyName = "ApplicationDate", Width = 70 });
-            dgv_Local_Driving_License_Applications.Columns.Add(new DataGridViewTextBoxColumn() { Name = "PassedTestCount", HeaderText = "Passed Tests", DataPropertyName = "PassedTestCount" });
-            dgv_Local_Driving_License_Applications.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Status", HeaderText = "Status", DataPropertyName = "Status" });
+            dgv_Local_Driving_License_Applications.Columns.Add
+                (new DataGridViewTextBoxColumn() { Name = "LocalDrivingLicenseApplicationID", HeaderText = "L.D.L.AppID", DataPropertyName = "LocalDrivingLicenseApplicationID" });
+            dgv_Local_Driving_License_Applications.Columns.Add
+                (new DataGridViewTextBoxColumn() { Name = "ClassName", HeaderText = "Driving Class", DataPropertyName = "ClassName" });
+            dgv_Local_Driving_License_Applications.Columns.Add
+                (new DataGridViewTextBoxColumn() { Name = "NationalNo", HeaderText = "National No.", DataPropertyName = "NationalNo" });
+            dgv_Local_Driving_License_Applications.Columns.Add
+                (new DataGridViewTextBoxColumn() { Name = "FullName", HeaderText = "Full Name.", DataPropertyName = "FullName", Width = 200 });
+            dgv_Local_Driving_License_Applications.Columns.Add
+                (new DataGridViewTextBoxColumn() { Name = "ApplicationDate", HeaderText = "Application Date", DataPropertyName = "ApplicationDate", Width = 70 });
+            dgv_Local_Driving_License_Applications.Columns.Add
+                (new DataGridViewTextBoxColumn() { Name = "PassedTestCount", HeaderText = "Passed Tests", DataPropertyName = "PassedTestCount" });
+            dgv_Local_Driving_License_Applications.Columns.Add
+                (new DataGridViewTextBoxColumn() { Name = "Status", HeaderText = "Status", DataPropertyName = "Status" });
 
             dgv_Local_Driving_License_Applications.AutoGenerateColumns = false;
-            dgv_Local_Driving_License_Applications.DataSource = GridData;
+            dgv_Local_Driving_License_Applications.DataSource = _dtAllLocalApplications;
             dgv_Local_Driving_License_Applications.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            lbl_Number_Of_Records.Text = dgv_Local_Driving_License_Applications.Rows.Count.ToString();
 
+            if (_dtAllLocalApplications != null)
+                lbl_Number_Of_Records.Text = _dtAllLocalApplications.Rows.Count.ToString();
         }
+
+        private void txt_Filter_TextChanged(object sender, EventArgs e)
+        {
+            string filterColumn = "";
+
+            switch (cbx_Filter.Text)
+            {
+                case "L.D.L.AppID":
+                    filterColumn = "LocalDrivingLicenseApplicationID";
+                    break;
+                case "National No":
+                    filterColumn = "NationalNo";
+                    break;
+                case "Full Name":
+                    filterColumn = "FullName";
+                    break;
+                case "Status":
+                    filterColumn = "Status";
+                    break;
+                default:
+                    filterColumn = "None";
+                    break;
+            }
+            if (filterColumn == "None" || string.IsNullOrWhiteSpace(txt_Filter.Text))
+            {
+                _dtAllLocalApplications.DefaultView.RowFilter = "";
+                lbl_Number_Of_Records.Text = dgv_Local_Driving_License_Applications.Rows.Count.ToString();
+                return;
+            }
+            if (filterColumn == "LocalDrivingLicenseApplicationID")
+            {
+                if (int.TryParse(txt_Filter.Text.Trim(), out _))
+                {
+                    _dtAllLocalApplications.DefaultView.RowFilter = string.Format("[{0}] = {1}", filterColumn, txt_Filter.Text.Trim());
+                }
+                else
+                {
+                    _dtAllLocalApplications.DefaultView.RowFilter = "1 = 0";
+                }
+            }
+            else
+            {
+                _dtAllLocalApplications.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", filterColumn, txt_Filter.Text.Trim());
+            }
+
+            lbl_Number_Of_Records.Text = dgv_Local_Driving_License_Applications.Rows.Count.ToString();
+        }
+
+        private void cbx_Filter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbx_Filter.SelectedIndex != 0)
+                txt_Filter.Visible = true;
+            else
+            {
+                txt_Filter.Visible = false;
+                txt_Filter.Text = "";
+            }
+        }
+
+
         private void btn_AddNewApplication_Click(object sender, EventArgs e)
         {
             Form frmNewLocalDrivingApplication = new New_Local_Driving_License_Application();
             frmNewLocalDrivingApplication.ShowDialog();
             Grid_Initialize();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        private void cbx_Filter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbx_Filter.SelectedIndex != 0)
-                txt_Filter.Visible = true;
-            else
-                txt_Filter.Visible = false;
-        }
-        private void txt_Filter_TextChanged(object sender, EventArgs e)
-        {
-            if (txt_Filter.Text == "")
-            {
-                Grid_Initialize();
-                return;
-            }
-            switch (cbx_Filter.SelectedIndex)
-            {
-                case 0:
-                    {
-                        Grid_Initialize();
-                        break;
-                    }
-                case 1:
-                    {
-                        if (!string.IsNullOrEmpty(txt_Filter.Text) && int.TryParse(txt_Filter.Text, out _))
-                        {
-                            Grid_Initialize(1, txt_Filter.Text);
-                        }
-                        break;
-                    }
-                case 2:
-                    {
-                        Grid_Initialize(2, txt_Filter.Text);
-                        break;
-                    }
-                case 3:
-                    {
-                        Grid_Initialize(3, txt_Filter.Text);
-                        break;
-                    }
-                case 4:
-                    {
-                        Grid_Initialize(4, txt_Filter.Text);
-                        break;
-                    }
-            }
-        }
+
         public (int PassedTests, string Status) GetPassedTestsAndStatusFromGrid()
         {
-
             var selectedRow = dgv_Local_Driving_License_Applications.SelectedRows[0];
             int passedTests = Convert.ToInt32(selectedRow.Cells["PassedTestCount"].Value);
             string status = selectedRow.Cells["Status"].Value?.ToString() ?? "";
-
             return (passedTests, status);
         }
+
         private void ResetContextMenu()
         {
             sechduleTestsToolStripMenuItem.Enabled = true;
-
             schedualVisionTestToolStripMenuItem.Enabled = true;
             SchedualWritenTestToolStripMenuItem.Enabled = true;
             schedualStreetTestToolStripMenuItem.Enabled = true;
-
             showApplicationDetailsToolStripMenuItem.Enabled = true;
             editApplicationToolStripMenuItem.Enabled = true;
             deleteApplicationToolStripMenuItem.Enabled = true;
@@ -122,8 +141,8 @@ namespace DVLV.UI
             issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = true;
             showLicenseToolStripMenuItem.Enabled = true;
             showPersonalLicenseHistoryToolStripMenuItem.Enabled = true;
-
         }
+
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
             ResetContextMenu();
@@ -133,7 +152,7 @@ namespace DVLV.UI
                 contextMenuStrip1.Close();
                 MessageBox.Show("operation  Failed !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            } //error in values or out of range
+            }
             else
             {
                 Status = Status.Trim().ToLower();
@@ -145,9 +164,6 @@ namespace DVLV.UI
                     sechduleTestsToolStripMenuItem.Enabled = false;
                     issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
                     showLicenseToolStripMenuItem.Enabled = true;
-
-
-
                 }
                 else if (Status == "cancelled")
                 {
@@ -155,23 +171,16 @@ namespace DVLV.UI
                     cancelApplicationToolStripMenuItem.Enabled = false;
                     sechduleTestsToolStripMenuItem.Enabled = false;
                     showLicenseToolStripMenuItem.Enabled = false;
-
-
-
                 }
                 else
                 {
                     if (HasLicense())
                     {
-                        //To Handel non Refreshed Grid and Take the realtime Data From Database
-                        //Ist an Additinal Function
                         sechduleTestsToolStripMenuItem.Enabled = false;
                         schedualVisionTestToolStripMenuItem.Enabled = false;
                         SchedualWritenTestToolStripMenuItem.Enabled = false;
                         schedualStreetTestToolStripMenuItem.Enabled = false;
                         issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
-
-
                     }
                     if (Passtest == 0)
                     {
@@ -208,15 +217,13 @@ namespace DVLV.UI
                         deleteApplicationToolStripMenuItem.Enabled = false;
                         showLicenseToolStripMenuItem.Enabled = false;
                         editApplicationToolStripMenuItem.Enabled = false;
-
                     }
                 }
-
             }
         }
+
         private bool HasLicense()
         {
-
             int LocalDrivingLicenseAppID = GetLocalDrivingLicenseApplicationIDFromGrid();
             if (LocalDrivingLicenseAppID <= 0)
             {
@@ -227,12 +234,10 @@ namespace DVLV.UI
             {
                 int ApplicationID = BLL.LocalDrivingLicenseApplicationBLL.GetApplicationID(LocalDrivingLicenseAppID);
                 return BLL.LicenseBLL.HasLicense(ApplicationID);
-
-
-
             }
             return false;
         }
+
         private int GetLocalDrivingLicenseApplicationIDFromGrid()
         {
             if (dgv_Local_Driving_License_Applications.SelectedRows.Count != 1)
@@ -250,6 +255,7 @@ namespace DVLV.UI
 
             return -1;
         }
+
         private void schedualVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int LocalDrivingLisAppID = GetLocalDrivingLicenseApplicationIDFromGrid();
@@ -263,9 +269,8 @@ namespace DVLV.UI
             Form frmVisionTest = new Vision_Test_Appointments(LocalDrivingLisAppID);
             frmVisionTest.ShowDialog();
             Grid_Initialize();
-
-
         }
+
         private void SchedualWritenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int LocalDrivingLicenseAppID = GetLocalDrivingLicenseApplicationIDFromGrid();
@@ -278,9 +283,9 @@ namespace DVLV.UI
             frmWrittenTest.ShowDialog();
             Grid_Initialize();
         }
+
         private void schedualStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             int LocalDrivingLicenseAppID = GetLocalDrivingLicenseApplicationIDFromGrid();
             if (LocalDrivingLicenseAppID <= 0)
             {
@@ -291,6 +296,7 @@ namespace DVLV.UI
             frmStreetTestAppointments.ShowDialog();
             Grid_Initialize();
         }
+
         private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int LocalDrivingLicenseAppID = GetLocalDrivingLicenseApplicationIDFromGrid();
@@ -304,6 +310,7 @@ namespace DVLV.UI
             frmIssueLicenseForTheFirstTime.ShowDialog();
             Grid_Initialize();
         }
+
         private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int LocalDrivingLicenseAppID = GetLocalDrivingLicenseApplicationIDFromGrid();
@@ -317,9 +324,9 @@ namespace DVLV.UI
                 int ApplicationID = BLL.LocalDrivingLicenseApplicationBLL.GetApplicationID(LocalDrivingLicenseAppID);
                 Form frmDriverInfo = new License_Info(ApplicationID);
                 frmDriverInfo.ShowDialog();
-
             }
         }
+
         private void showPersonalLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int ApplicationID = BLL.LocalDrivingLicenseApplicationBLL.GetApplicationID(GetLocalDrivingLicenseApplicationIDFromGrid());
@@ -335,8 +342,8 @@ namespace DVLV.UI
                 MessageBox.Show("This Person Isn`t a Driver.", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
         }
+
         private void cancelApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var selectedRow = dgv_Local_Driving_License_Applications.SelectedRows[0];
@@ -352,10 +359,9 @@ namespace DVLV.UI
                         Grid_Initialize();
                     }
                 }
-
             }
-
         }
+
         private void deleteApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var selectedRow = dgv_Local_Driving_License_Applications.SelectedRows[0];
@@ -374,10 +380,7 @@ namespace DVLV.UI
                         {
                             MessageBox.Show("Application Deleted ", "Complete", MessageBoxButtons.OK);
                             Grid_Initialize();
-
                         }
-
-
                     }
                     else
                     {
@@ -385,7 +388,6 @@ namespace DVLV.UI
                         return;
                     }
                 }
-
             }
         }
 
@@ -399,8 +401,6 @@ namespace DVLV.UI
                 {
                     Form frmUpdateLoccalDrivingLicenseApplcaition = new New_Local_Driving_License_Application(LDLAppID);
                     frmUpdateLoccalDrivingLicenseApplcaition.ShowDialog();
-
-
                 }
                 else
                 {
@@ -415,9 +415,18 @@ namespace DVLV.UI
             else if (Status == "Cancelled")
             {
                 MessageBox.Show("You can't edit this application because It is cancelled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
+        }
 
+        private void txt_Filter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cbx_Filter.Text == "L.D.L.AppID")
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
         }
     }
 }

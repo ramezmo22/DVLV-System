@@ -115,7 +115,7 @@ namespace DVLV.UI
             // 
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showApplicationDetailsToolStripMenuItem, toolStripSeparator1, editApplicationToolStripMenuItem, deleteApplicationToolStripMenuItem, toolStripSeparator3, cancelApplicationToolStripMenuItem, toolStripSeparator4, sechduleTestsToolStripMenuItem, toolStripSeparator6, issueDrivingLicenseFirstTimeToolStripMenuItem, toolStripSeparator5, showLicenseToolStripMenuItem, toolStripSeparator7, showPersonalLicenseHistoryToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(263, 366);
+            contextMenuStrip1.Size = new Size(263, 344);
             contextMenuStrip1.Opening += contextMenuStrip1_Opening;
             // 
             // showApplicationDetailsToolStripMenuItem
@@ -294,6 +294,7 @@ namespace DVLV.UI
             txt_Filter.Size = new Size(171, 23);
             txt_Filter.TabIndex = 8;
             txt_Filter.TextChanged += txt_Filter_TextChanged;
+            txt_Filter.KeyPress += txt_Filter_KeyPress;
             // 
             // btn_AddNewApplication
             // 

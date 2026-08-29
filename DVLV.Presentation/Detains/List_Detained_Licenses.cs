@@ -10,29 +10,19 @@ namespace DVLV.UI.Detains
 {
     public partial class List_Detained_Licenses : Form
     {
-        private DataTable _AllDetainedLicenses = new DataTable();
+        private DataTable _AllDetainedLicenses;
 
         public List_Detained_Licenses()
         {
             InitializeComponent();
+            InitializeGridColumns();
             cmb_filter.SelectedIndex = 0;
             dgv_List_Detained.ContextMenuStrip = contextMenuStrip1;
             Refresh_Detein_Grid();
-
         }
 
-        private void Refresh_Detein_Grid()
+        private void InitializeGridColumns()
         {
-            Load_Grid_Data();
-            UpdateRecordsCount();
-        }
-
-        private void Load_Grid_Data(int FilterMood = 0, string FilterQuery = "")
-        {
-            DataTable Data = BLL.DetainedLicensesBLL.GetAllDetainedLicenses(FilterMood, FilterQuery);
-
-            //Grid inisilization :
-
             DataGridViewTextBoxColumn colDetainID = new DataGridViewTextBoxColumn();
             colDetainID.DataPropertyName = "DetainID";
             colDetainID.HeaderText = "D.ID";
@@ -88,7 +78,6 @@ namespace DVLV.UI.Detains
             colReleaseAppID.Name = "Release App ID";
             colReleaseAppID.Width = 120;
 
-            // إضافة الأعمدة للـ DataGridView
             dgv_List_Detained.Columns.Clear();
             dgv_List_Detained.Columns.Add(colDetainID);
             dgv_List_Detained.Columns.Add(colLicenseID);
@@ -99,80 +88,123 @@ namespace DVLV.UI.Detains
             dgv_List_Detained.Columns.Add(colNationalNo);
             dgv_List_Detained.Columns.Add(colFullName);
             dgv_List_Detained.Columns.Add(colReleaseAppID);
+        }
 
-            // ربط البيانات بعد تعريف الأعمدة
-            dgv_List_Detained.DataSource = Data;
-
+        private void Refresh_Detein_Grid()
+        {
+            _AllDetainedLicenses = BLL.DetainedLicensesBLL.GetAllDetainedLicenses();
+            dgv_List_Detained.DataSource = _AllDetainedLicenses;
+            ApplyFilter();
             UpdateRecordsCount();
         }
 
         private void UpdateRecordsCount()
         {
-            label3.Text = "# Records : " + dgv_List_Detained.RowCount.ToString();
+            label3.Text = "# Records : " + dgv_List_Detained.Rows.Count.ToString();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*
-            None
-            Detain ID
-            Is Released
-            National No.
-            Full Name
-            Release Application ID
-            */
+            txt_To_Find.Text = "";
+            cmb_Is_Release.SelectedIndex = -1;
 
             switch (cmb_filter.SelectedIndex)
             {
-                case 0:
-                    txt_To_Find.Text = "";
+                case 0: // None
                     txt_To_Find.Visible = false;
                     cmb_Is_Release.Visible = false;
-                    Refresh_Detein_Grid();
                     break;
-                case 1:
-                    txt_To_Find.Text = "";
+                case 1: // Detain ID
                     txt_To_Find.Visible = true;
                     cmb_Is_Release.Visible = false;
                     break;
-                case 2:
-                    txt_To_Find.Text = "";
+                case 2: // Is Released
                     txt_To_Find.Visible = false;
                     cmb_Is_Release.Visible = true;
+                    cmb_Is_Release.SelectedIndex = 0;
                     break;
-                case 3:
-                    txt_To_Find.Text = "";
+                case 3: // National No.
                     txt_To_Find.Visible = true;
                     cmb_Is_Release.Visible = false;
                     break;
-                case 4:
-                    txt_To_Find.Text = "";
+                case 4: // Full Name
                     txt_To_Find.Visible = true;
                     cmb_Is_Release.Visible = false;
                     break;
-                case 5:
-                    txt_To_Find.Text = "";
+                case 5: // Release Application ID
                     txt_To_Find.Visible = true;
                     cmb_Is_Release.Visible = false;
                     break;
             }
+            ApplyFilter();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txt_To_Find_TextChanged(object sender, EventArgs e)
         {
-
             switch (cmb_filter.SelectedIndex)
             {
                 case 1:
-                    ValidationHelper.PhoneNumberValidation(txt_To_Find, errorProvider1);
-                    break;
                 case 5:
                     ValidationHelper.PhoneNumberValidation(txt_To_Find, errorProvider1);
                     break;
             }
-            Load_Grid_Data(cmb_filter.SelectedIndex, txt_To_Find.Text);
+            ApplyFilter();
         }
 
+        private void cmb_Is_Release_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplyFilter();
+        }
+
+        private void ApplyFilter()
+        {
+            if (_AllDetainedLicenses == null || _AllDetainedLicenses.Columns.Count == 0)
+                return;
+
+            switch (cmb_filter.SelectedIndex)
+            {
+                case 0: // None
+                    _AllDetainedLicenses.DefaultView.RowFilter = "";
+                    break;
+                case 1: // Detain ID
+                    if (string.IsNullOrWhiteSpace(txt_To_Find.Text))
+                        _AllDetainedLicenses.DefaultView.RowFilter = "";
+                    else if (int.TryParse(txt_To_Find.Text.Trim(), out int detainID))
+                        _AllDetainedLicenses.DefaultView.RowFilter = $"DetainID = {detainID}";
+                    else
+                        _AllDetainedLicenses.DefaultView.RowFilter = "DetainID = 0";
+                    break;
+                case 2: // Is Released
+                    if (cmb_Is_Release.SelectedIndex == 0)
+                        _AllDetainedLicenses.DefaultView.RowFilter = "IsReleased = 1";
+                    else if (cmb_Is_Release.SelectedIndex == 1)
+                        _AllDetainedLicenses.DefaultView.RowFilter = "IsReleased = 0";
+                    else
+                        _AllDetainedLicenses.DefaultView.RowFilter = "";
+                    break;
+                case 3: // National No.
+                    if (string.IsNullOrWhiteSpace(txt_To_Find.Text))
+                        _AllDetainedLicenses.DefaultView.RowFilter = "";
+                    else
+                        _AllDetainedLicenses.DefaultView.RowFilter = $"NationalNo LIKE '{txt_To_Find.Text.Trim().Replace("'", "''")}%'";
+                    break;
+                case 4: // Full Name
+                    if (string.IsNullOrWhiteSpace(txt_To_Find.Text))
+                        _AllDetainedLicenses.DefaultView.RowFilter = "";
+                    else
+                        _AllDetainedLicenses.DefaultView.RowFilter = $"[Full Name] LIKE '{txt_To_Find.Text.Trim().Replace("'", "''")}%'";
+                    break;
+                case 5: // Release Application ID
+                    if (string.IsNullOrWhiteSpace(txt_To_Find.Text))
+                        _AllDetainedLicenses.DefaultView.RowFilter = "";
+                    else if (int.TryParse(txt_To_Find.Text.Trim(), out int relAppID))
+                        _AllDetainedLicenses.DefaultView.RowFilter = $"ReleaseApplicationID = {relAppID}";
+                    else
+                        _AllDetainedLicenses.DefaultView.RowFilter = "ReleaseApplicationID = 0";
+                    break;
+            }
+
+            UpdateRecordsCount();
+        }
 
         private int GetSelectedLicenseID()
         {
@@ -205,7 +237,6 @@ namespace DVLV.UI.Detains
                 return;
             }
 
-            // Show person details form
             Form frmPersonDetails = new PersonDetails(personID);
             frmPersonDetails.ShowDialog();
         }
@@ -237,6 +268,7 @@ namespace DVLV.UI.Detains
             Form frmLicenseHistory = new DVLV.UI.Licenses.License_History(driverID, personID);
             frmLicenseHistory.ShowDialog();
         }
+
         private void btn_Release_Click(object sender, EventArgs e)
         {
             Form frmReleaseDetain = new Release_Detained_License();
@@ -267,29 +299,5 @@ namespace DVLV.UI.Detains
             frmReleaseDetain.ShowDialog();
             Refresh_Detein_Grid();
         }
-
-        private void cmb_Is_Release_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmb_Is_Release.SelectedIndex == 0)
-                Load_Grid_Data(2, "1");
-            if (cmb_Is_Release.SelectedIndex == 1)
-                Load_Grid_Data(2, "0");
-        }
-
-        //private int GetSelectedDetainID()
-        //{
-        //    if (dgv_List_Detained.SelectedRows.Count == 0)
-        //    {
-        //        MessageBox.Show("Please select a detained license record", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return -1;
-        //    }
-
-        //    if (int.TryParse(dgv_List_Detained.SelectedRows[0].Cells["D.ID"].Value?.ToString(), out int detainID))
-        //        return detainID;
-
-        //    MessageBox.Show("Error retrieving Detain ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    return -1;
-        //}
-
     }
 }
