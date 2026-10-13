@@ -1,7 +1,7 @@
 # 🚗 Driver & Vehicle Licensing Department (DVLD) System
 
 [![C#](https://img.shields.io/badge/Language-C%23-blue.svg)](https://learn.microsoft.com/en-us/dotnet/csharp/)
-[![Platform](https://img.shields.io/.badge/Platform-Windows%20Forms%20(.NET)-purple.svg)](https://dotnet.microsoft.com/)
+[![Platform](https://img.shields.io/.badge/Platform-Windows%20Forms%20(DotNET)-purple.svg)](https://dotnet.microsoft.com/)
 [![Database](https://img.shields.io/badge/Database-SQL%20Server-red.svg)](https://www.microsoft.com/en-us/sql-server)
 [![Architecture](https://img.shields.io/badge/Architecture-3--Tier%20Architecture-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
