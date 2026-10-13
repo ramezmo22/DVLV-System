@@ -1,7 +1,7 @@
 # 🚗 Driver & Vehicle Licensing Department (DVLD) System
 
 [![C#](https://img.shields.io/badge/Language-C%23-blue.svg)](https://learn.microsoft.com/en-us/dotnet/csharp/)
-[![Platform](https://img.shields.io/.badge/Platform-Windows%20Forms%20(DotNET)-purple.svg)](https://dotnet.microsoft.com/)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20Forms%20(DotNET)-purple.svg)](https://dotnet.microsoft.com/)
 [![Database](https://img.shields.io/badge/Database-SQL%20Server-red.svg)](https://www.microsoft.com/en-us/sql-server)
 [![Architecture](https://img.shields.io/badge/Architecture-3--Tier%20Architecture-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -14,7 +14,6 @@ An enterprise-grade desktop management system tailored for the **Driver and Vehi
 - [Architecture Overview](#-architecture-overview)
 - [Key Features](#-key-features)
 - [Screenshots & UI Showcase](#-screenshots--ui-showcase)
-- [Database & ERD](#-database--erd)
 - [Performance & Optimization Highlights](#-performance--optimization-highlights)
 - [Getting Started & Installation](#-getting-started--installation)
 - [Configuration](#-configuration)
@@ -26,7 +25,6 @@ An enterprise-grade desktop management system tailored for the **Driver and Vehi
 
 The system strictly adheres to the **3-Tier Architecture pattern** to ensure separation of concerns, scalability, and maintainability:
 
-```text
 ┌────────────────────────────────────────────────────────┐
 │               Presentation Layer (UI)                  │
 │       - Windows Forms & Custom UserControls            │
@@ -40,7 +38,7 @@ The system strictly adheres to the **3-Tier Architecture pattern** to ensure sep
 └───────────────────────────┬────────────────────────────┘
                             │
 ┌───────────────────────────▼────────────────────────────┐
-│             Data Access Layer (DAL)                    │
+│              Data Access Layer (DAL)                   │
 │       - ADO.NET (SqlConnection, SqlCommand, SqlParam)  │
 │       - Parameterized Queries & Transactions           │
 └───────────────────────────┬────────────────────────────┘
@@ -50,7 +48,6 @@ The system strictly adheres to the **3-Tier Architecture pattern** to ensure sep
 │       - Normalized Relational Tables                   │
 │       - Views & Procedures                             │
 └────────────────────────────────────────────────────────┘
-```
 
 ---
 
@@ -83,22 +80,20 @@ The system strictly adheres to the **3-Tier Architecture pattern** to ensure sep
 
 ## 🖼 Screenshots & UI Showcase
 
-<!-- Place your screenshots here following either Method 1 (GitHub URLs) or Method 2 (local ./screenshots/ folder) -->
-
 ### 🔐 Authentication & Main Dashboard
 | Login Screen | Main Navigation |
 | :---: | :---: |
-| ![Login Screen](screenshots/login.png) | ![Main Form](screenshots/dashboard.png) |
+| <img src="https://github.com/user-attachments/assets/335e97fa-6a65-4238-a643-b311ed94fb07" width="450" /> | <img src="https://github.com/user-attachments/assets/b4a7b686-9ed7-43e8-aa51-a187c99a8597" width="450" /> |
 
 ### 📋 Applications & In-Memory Filtered Lists
 | Local Driving License Applications | International License Applications |
 | :---: | :---: |
-| ![Local Applications](screenshots/local_applications.png) | ![International Applications](screenshots/international_applications.png) |
+| <img src="https://github.com/user-attachments/assets/f9032d4a-cf4f-4911-845a-bd6f578b12a4" width="450" /> | <img src="https://github.com/user-attachments/assets/adccb46d-6f45-4cee-a5d8-bb507dbcdf09" width="450" /> |
 
 ### 🧪 Tests Management & License Card
 | Test Appointment Workflow | Driving License Card |
 | :---: | :---: |
-| ![Test Appointments](screenshots/test_appointments.png) | ![License Card](screenshots/license_card.png) |
+| <img src="https://github.com/user-attachments/assets/195dda01-821b-409f-bd38-c67ee687cb05" width="450" /> | <img src="https://github.com/user-attachments/assets/2ae05c75-19c4-49cb-9c31-cb9255e9476a" width="450" /> |
 
 ---
 
@@ -124,18 +119,14 @@ The system strictly adheres to the **3-Tier Architecture pattern** to ensure sep
 
 ### Database Setup
 1. Open SSMS and connect to your SQL Server instance.
-2. Create a database named `DVLV` (or execute the script directly).
+2. Create a database named `DVLV`.
 3. Open and run the included SQL script file:
-   ```sql
-   DVLV-Script.sql
-   ```
+   `DVLV-Script.sql`
 4. Verify that tables, default application types, and test types are populated.
 
 ### Project Setup
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/ramezmo22/DVLV-System.git
-   ```
+   `git clone https://github.com/ramezmo22/DVLV-System.git`
 2. Open the solution file `DVLD.slnx` using Visual Studio.
 3. Configure the database connection string in `App.config` (see below).
 4. Build the solution (`Ctrl + Shift + B`) and Run (`F5`).
@@ -156,10 +147,7 @@ Update the `connectionStrings` section in your local `App.config`:
   </connectionStrings>
 </configuration>
 ```
+👨‍💻 Author
+Ramez Alkhabbas
 
----
-
-## 👨‍💻 Author
-
-**Ramez Alkhabbas**  
-- GitHub: [@ramezmo22](https://github.com/ramezmo22)
+GitHub: @ramezmo22
