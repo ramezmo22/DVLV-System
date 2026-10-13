@@ -13,6 +13,8 @@ namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
 {
     public partial class List_International_License_Applications : Form
     {
+        private DataTable _dtAllInternationalLicenses;
+
         public List_International_License_Applications()
         {
             InitializeComponent();
@@ -24,10 +26,10 @@ namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
         {
             this.Close();
         }
-        public void Grid_Initialize(int FilterationNumber = 0, string filterValue = "")
-        {
 
-            DataTable GridData = BLL.InternationalLicenseApplicationBLL.LoadDataToGridView(FilterationNumber, filterValue);
+        public void Grid_Initialize()
+        {
+            _dtAllInternationalLicenses = BLL.InternationalLicenseApplicationBLL.LoadDataToGridView(0, "");
             //InternationalLicenseID	ApplicationID	DriverID	IssuedUsingLocalLicenseID	IssueDate	ExpirationDate	IsActive	
 
             dgv_International_Driving_License_Applications.Columns.Clear();
@@ -47,11 +49,11 @@ namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
             dgv_International_Driving_License_Applications.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "IsActive", HeaderText = "Is Active", DataPropertyName = "IsActive" });
 
             dgv_International_Driving_License_Applications.AutoGenerateColumns = false;
-            dgv_International_Driving_License_Applications.DataSource = GridData;
+            dgv_International_Driving_License_Applications.DataSource = _dtAllInternationalLicenses;
             dgv_International_Driving_License_Applications.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             lbl_Number_Of_Records.Text = dgv_International_Driving_License_Applications.Rows.Count.ToString();
-
         }
+
         private int GetLocalDrivingLicenseApplicationIDFromGrid()
         {
             if (dgv_International_Driving_License_Applications.SelectedRows.Count != 1)
@@ -69,6 +71,7 @@ namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
 
             return -1;
         }
+
         public int GetDriverIDdFromGrid()
         {
             if (dgv_International_Driving_License_Applications.SelectedRows.Count != 1)
@@ -100,6 +103,7 @@ namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
             }
             return -1;
         }
+
         private void btn_AddNewApplication_Click_1(object sender, EventArgs e)
         {
             Form frmNewInternationalDrivingApplication = new New_International_License_Application();
@@ -109,26 +113,43 @@ namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
 
         private void txt_Filter_TextChanged(object sender, EventArgs e)
         {
+            if (_dtAllInternationalLicenses == null)
+                return;
 
-            string text;
+            string FilterColumn = "";
+
             switch (cbx_Filter.SelectedIndex)
             {
                 case 1:
+                    FilterColumn = "InternationalLicenseID";
+                    break;
                 case 2:
+                    FilterColumn = "ApplicationID";
+                    break;
                 case 3:
-                    {
-                        ValidationHelper.PhoneNumberValidation(txt_Filter, errorProvider1);
-                        Grid_Initialize(cbx_Filter.SelectedIndex, txt_Filter.Text);
-                        break;
-                    }
-
-
+                    FilterColumn = "DriverID";
+                    break;
+                default:
+                    FilterColumn = "None";
+                    break;
             }
-        }
 
+            if (txt_Filter.Text.Trim() == "" || FilterColumn == "None")
+            {
+                _dtAllInternationalLicenses.DefaultView.RowFilter = "";
+                lbl_Number_Of_Records.Text = dgv_International_Driving_License_Applications.Rows.Count.ToString();
+                return;
+            }
+
+            ValidationHelper.PhoneNumberValidation(txt_Filter, errorProvider1);
+            _dtAllInternationalLicenses.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txt_Filter.Text.Trim());
+            lbl_Number_Of_Records.Text = dgv_International_Driving_License_Applications.Rows.Count.ToString();
+        }
 
         private void cbx_Filter_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txt_Filter.Text = "";
+
             switch (cbx_Filter.SelectedIndex)
             {
                 case 0:
@@ -140,18 +161,48 @@ namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
                 case 3:
                     txt_Filter.Visible = true;
                     cbx_isActive.Visible = false;
+                    txt_Filter.Focus();
                     break;
                 case 4:
                     txt_Filter.Visible = false;
                     cbx_isActive.Visible = true;
+                    cbx_isActive.SelectedIndex = 0;
                     break;
+            }
 
+            if (_dtAllInternationalLicenses != null)
+            {
+                _dtAllInternationalLicenses.DefaultView.RowFilter = "";
+                lbl_Number_Of_Records.Text = dgv_International_Driving_License_Applications.Rows.Count.ToString();
             }
         }
 
         private void cbx_isActive_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Grid_Initialize(4, cbx_isActive.SelectedIndex == 0 ? "true" : "false");
+            if (_dtAllInternationalLicenses == null)
+                return;
+
+            string FilterValue = "";
+
+            switch (cbx_isActive.Text)
+            {
+                case "All":
+                    FilterValue = "";
+                    break;
+                case "Yes":
+                    FilterValue = "1";
+                    break;
+                case "No":
+                    FilterValue = "0";
+                    break;
+            }
+
+            if (FilterValue == "")
+                _dtAllInternationalLicenses.DefaultView.RowFilter = "";
+            else
+                _dtAllInternationalLicenses.DefaultView.RowFilter = string.Format("[IsActive] = {0}", FilterValue);
+
+            lbl_Number_Of_Records.Text = dgv_International_Driving_License_Applications.Rows.Count.ToString();
         }
 
         private void showPersonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -160,7 +211,6 @@ namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
             int PersonID = BLL.PeopleBLL.GetPersonIDByDriverID(DriverID);
             Form personDetails = new PersonDetails(PersonID);
             personDetails.ShowDialog();
-
         }
 
         private void showLicenseDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -176,7 +226,6 @@ namespace DVLV.UI.Applications_Manage.International_Driving_License_Applicaion
             int PersonID = BLL.PeopleBLL.GetPersonIDByDriverID(DriverID);
             Form frmPersonLicenseHistory = new License_History(DriverID, PersonID);
             frmPersonLicenseHistory.ShowDialog();
-
         }
     }
 }

@@ -1,84 +1,112 @@
 ﻿using DVLV.BLL;
 using DVLV.Presentation;
+using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Text;
 using System.Windows.Forms;
+
 namespace DVLV.UI
 {
     public partial class LoginScreen : Form
     {
+        private const string RegistryPath = @"HKEY_CURRENT_USER\Software\DVLD";
+
         public LoginScreen()
         {
             InitializeComponent();
-
-            LoudUsernamePassword();
+            LoadUsernamePassword();
         }
-        private void LoudUsernamePassword()
+
+        private void LoadUsernamePassword()
         {
-            if (File.Exists("rememberme.txt"))
+            try
             {
-                string[] Lines = File.ReadAllLines("rememberme.txt");
-                txt_UserName.Text = Lines[0].Trim();
-                txt_Password.Text = Lines[1].Trim();
+                string isChecked = Registry.GetValue(RegistryPath, "Checked", "false") as string;
+
+                if (isChecked == "true")
+                {
+                    cb_RememberMe.Checked = true;
+                    txt_UserName.Text = Registry.GetValue(RegistryPath, "Username", "") as string;
+                    txt_Password.Text = Registry.GetValue(RegistryPath, "Password", "") as string;
+                }
+                else
+                {
+                    cb_RememberMe.Checked = false;
+                }
+            }
+            catch (Exception ex)
+            { 
             }
         }
+
         private void btn_Close_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            string UserName = txt_UserName.Text.Trim();
-            string Password = txt_Password.Text.Trim();
-            UserBLL user = new UserBLL();
-            user.UserName = UserName;
-            user.Password = Password;
+            string userName = txt_UserName.Text.Trim();
+            string password = txt_Password.Text.Trim();
+
+            UserBLL user = new UserBLL
+            {
+                UserName = userName,
+                Password = password
+            };
+
             if (user.CheckUserNamePassword())
             {
                 if (user.IsUserActive())
                 {
-                    int UserID = UserBLL.GetUserID(UserName, Password);
-                    CurrentUserBLL.SetUser(UserID, user.UserName);
+                    int userID = UserBLL.GetUserID(userName, password);
+
+                    SaveUserNamePasswordInWinRegistry(userName, password);
+                    CurrentUserBLL.SetUser(userID, user.UserName);
+
                     this.Hide();
-                    Form mainScreen = new Main();
-                    mainScreen.ShowDialog();
+                    using (Form mainScreen = new Main())
+                    {
+                        mainScreen.ShowDialog();
+                    }
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Your account is not active. Please contact administrator.");
+                    MessageBox.Show("Your account is not active. Please contact administrator.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
-                MessageBox.Show("Invalid username or password. Please try again.");
+                MessageBox.Show("Invalid username or password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void cb_RememberMe_CheckedChanged(object sender, EventArgs e)
+        private void SaveUserNamePasswordInWinRegistry(string userName, string password)
         {
-            if (cb_RememberMe.Checked)
+            try
             {
-                if (string.IsNullOrWhiteSpace(txt_UserName.Text) || string.IsNullOrWhiteSpace(txt_Password.Text))//To check if credentials are not provided
+                if (cb_RememberMe.Checked)
                 {
-                    MessageBox.Show("Please enter both username and password to remember.");
-                    cb_RememberMe.Checked = false; // Uncheck the box if credentials are not provided
-                    return;
+                    Registry.SetValue(RegistryPath, "Username", userName, RegistryValueKind.String);
+                    Registry.SetValue(RegistryPath, "Password", password, RegistryValueKind.String);
+                    Registry.SetValue(RegistryPath, "Checked", "true", RegistryValueKind.String);
                 }
                 else
-                    File.WriteAllText("rememberme.txt", $"{txt_UserName.Text.Trim()}\n{txt_Password.Text.Trim()}");
-            }
-            if (!cb_RememberMe.Checked)
-            {
-                if (File.Exists("rememberme.txt"))
                 {
-                    File.Delete("rememberme.txt");
+                    using (RegistryKey baseKey = Registry.CurrentUser.OpenSubKey(@"Software\DVLD", true))
+                    {
+                        if (baseKey != null)
+                        {
+                            baseKey.DeleteValue("Username", false);
+                            baseKey.DeleteValue("Password", false);
+                            baseKey.SetValue("Checked", "false", RegistryValueKind.String);
+                        }
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not save login preferences: " + ex.Message, "Registry Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

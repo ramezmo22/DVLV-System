@@ -173,7 +173,7 @@ namespace DVLV.UI
             cb_RememberMe.TabIndex = 3;
             cb_RememberMe.Text = "Remember Me.";
             cb_RememberMe.UseVisualStyleBackColor = true;
-            cb_RememberMe.CheckedChanged += cb_RememberMe_CheckedChanged;
+            //cb_RememberMe.CheckedChanged += cb_RememberMe_CheckedChanged;
             // 
             // btn_Login
             // 

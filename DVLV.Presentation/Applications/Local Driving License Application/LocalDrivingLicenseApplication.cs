@@ -16,9 +16,9 @@ namespace DVLV.UI
         public LocalDrivingLicenseApplications()
         {
             InitializeComponent();
-            Grid_Initialize();
             cbx_Filter.SelectedIndex = 0;
             txt_Filter.Visible = false;
+            Grid_Initialize();
         }
 
         public void Grid_Initialize()
@@ -51,6 +51,9 @@ namespace DVLV.UI
 
         private void txt_Filter_TextChanged(object sender, EventArgs e)
         {
+            if (_dtAllLocalApplications == null)
+                return;
+
             string filterColumn = "";
 
             switch (cbx_Filter.Text)
@@ -58,6 +61,7 @@ namespace DVLV.UI
                 case "L.D.L.AppID":
                     filterColumn = "LocalDrivingLicenseApplicationID";
                     break;
+                case "National No.":
                 case "National No":
                     filterColumn = "NationalNo";
                     break;
@@ -71,12 +75,14 @@ namespace DVLV.UI
                     filterColumn = "None";
                     break;
             }
+
             if (filterColumn == "None" || string.IsNullOrWhiteSpace(txt_Filter.Text))
             {
                 _dtAllLocalApplications.DefaultView.RowFilter = "";
                 lbl_Number_Of_Records.Text = dgv_Local_Driving_License_Applications.Rows.Count.ToString();
                 return;
             }
+
             if (filterColumn == "LocalDrivingLicenseApplicationID")
             {
                 if (int.TryParse(txt_Filter.Text.Trim(), out _))
@@ -98,15 +104,24 @@ namespace DVLV.UI
 
         private void cbx_Filter_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txt_Filter.Text = "";
+
             if (cbx_Filter.SelectedIndex != 0)
+            {
                 txt_Filter.Visible = true;
+                txt_Filter.Focus();
+            }
             else
             {
                 txt_Filter.Visible = false;
-                txt_Filter.Text = "";
+            }
+
+            if (_dtAllLocalApplications != null)
+            {
+                _dtAllLocalApplications.DefaultView.RowFilter = "";
+                lbl_Number_Of_Records.Text = dgv_Local_Driving_License_Applications.Rows.Count.ToString();
             }
         }
-
 
         private void btn_AddNewApplication_Click(object sender, EventArgs e)
         {

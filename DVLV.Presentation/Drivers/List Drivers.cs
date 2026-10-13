@@ -11,18 +11,19 @@ namespace DVLV.UI.Drivers
 {
     public partial class List_Drivers : Form
     {
+        private DataTable _dtAllDrivers;
+
         public List_Drivers()
         {
             InitializeComponent();
+            cbx_Filter_By.SelectedIndex = 0;
             txt_Filter_Input.Visible = false;
             Grid_Initialize();
-
         }
 
-        private void Grid_Initialize(int SelectedIndex = 0, string FilteringQurey = "")
+        private void Grid_Initialize()
         {
-
-            DataTable table = BLL.DriverBLL.GetFilteredData(SelectedIndex, FilteringQurey);
+            _dtAllDrivers = BLL.DriverBLL.GetFilteredData(0, "");
 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
@@ -68,16 +69,13 @@ namespace DVLV.UI.Drivers
                 DataPropertyName = "NumberOfActiveLicenses",
                 HeaderText = "Active Licenses",
                 ReadOnly = true,
-
             });
 
-
-            dataGridView1.DataSource = table;
+            dataGridView1.DataSource = _dtAllDrivers;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            lbl_Records.Text = "#Records: " + table.Rows.Count.ToString();
 
-
-
+            if (_dtAllDrivers != null)
+                lbl_Records.Text = "#Records: " + _dtAllDrivers.Rows.Count.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -87,6 +85,8 @@ namespace DVLV.UI.Drivers
 
         private void cbx_Filter_By_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txt_Filter_Input.Text = "";
+
             if (cbx_Filter_By.SelectedIndex == 0)
             {
                 txt_Filter_Input.Visible = false;
@@ -94,22 +94,69 @@ namespace DVLV.UI.Drivers
             else
             {
                 txt_Filter_Input.Visible = true;
+                txt_Filter_Input.Focus();
+            }
+
+            if (_dtAllDrivers != null)
+            {
+                _dtAllDrivers.DefaultView.RowFilter = "";
+                lbl_Records.Text = "#Records: " + dataGridView1.Rows.Count.ToString();
             }
         }
 
         private void txt_Filter_Input_TextChanged(object sender, EventArgs e)
         {
-            string query = txt_Filter_Input.Text.Trim();
+            if (_dtAllDrivers == null)
+                return;
 
-            if ((cbx_Filter_By.SelectedIndex == 1 || cbx_Filter_By.SelectedIndex == 2) &&
-                !string.IsNullOrWhiteSpace(query) &&
-                !int.TryParse(query, out _))
+            string filterColumn = "";
+
+            switch (cbx_Filter_By.Text)
             {
-                txt_Filter_Input.Text = string.Empty;
+                case "Lic.DriverID":
+                case "Driver ID":
+                    filterColumn = "DriverID";
+                    break;
+                case "Person ID":
+                    filterColumn = "PersonID";
+                    break;
+                case "NationalNo.":
+                case "National No":
+                case "National No.":
+                    filterColumn = "NationalNo";
+                    break;
+                case "Full Name":
+                    filterColumn = "FullName";
+                    break;
+                default:
+                    filterColumn = "None";
+                    break;
+            }
+
+            if (filterColumn == "None" || string.IsNullOrWhiteSpace(txt_Filter_Input.Text))
+            {
+                _dtAllDrivers.DefaultView.RowFilter = "";
+                lbl_Records.Text = "#Records: " + dataGridView1.Rows.Count.ToString();
                 return;
             }
 
-            Grid_Initialize(cbx_Filter_By.SelectedIndex, query);
+            if (filterColumn == "DriverID" || filterColumn == "PersonID")
+            {
+                if (int.TryParse(txt_Filter_Input.Text.Trim(), out _))
+                {
+                    _dtAllDrivers.DefaultView.RowFilter = string.Format("[{0}] = {1}", filterColumn, txt_Filter_Input.Text.Trim());
+                }
+                else
+                {
+                    _dtAllDrivers.DefaultView.RowFilter = "1 = 0";
+                }
+            }
+            else
+            {
+                _dtAllDrivers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", filterColumn, txt_Filter_Input.Text.Trim());
+            }
+
+            lbl_Records.Text = "#Records: " + dataGridView1.Rows.Count.ToString();
         }
     }
 }

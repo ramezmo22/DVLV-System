@@ -31,10 +31,7 @@ namespace DVLV.UI.Licenses.Local_License
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Loads license data and populates the UI fields
-        /// </summary>
-        /// <param name="licenseID">The ID of the license to load</param>
+
         public void LoadData(int licenseID)
         {
             try
@@ -57,10 +54,7 @@ namespace DVLV.UI.Licenses.Local_License
             }
         }
 
-        /// <summary>
-        /// Gets application type information
-        /// </summary>
-        /// <returns>Tuple containing application title and fees</returns>
+
         private (string Title, int Fees) GetApplicationTypeInfo()
         {
             int applicationID = RENEW_LICENSE_TYPE_ID;
@@ -71,9 +65,7 @@ namespace DVLV.UI.Licenses.Local_License
             return (applicationTitle, applicationFees);
         }
 
-        /// <summary>
-        /// Populates UI labels with license information
-        /// </summary>
+
         private void PopulateUIFields(
             (string Title, int Fees) applicationInfo,
             DateTime currentDate,
@@ -94,10 +86,7 @@ namespace DVLV.UI.Licenses.Local_License
             lbl_Total_Fees.Text = this._TotalFees.ToString();
         }
 
-        /// <summary>
-        /// Renews a license for the current driver
-        /// </summary>
-        /// <returns>True if renewal was successful, false otherwise</returns>
+
         public bool RenewLicense()
         {
             try
@@ -120,9 +109,7 @@ namespace DVLV.UI.Licenses.Local_License
             }
         }
 
-        /// <summary>
-        /// Creates a new renewal application object
-        /// </summary>
+
         private BLL.ApplicationsBLL CreateRenewalApplication(int personID)
         {
             return new ApplicationsBLL
@@ -137,9 +124,6 @@ namespace DVLV.UI.Licenses.Local_License
             );
         }
 
-        /// <summary>
-        /// Processes the license renewal and updates database
-        /// </summary>
         private bool ProcessLicenseRenewal(BLL.ApplicationsBLL renewApp, int personID)
         {
             int newLicenseID = BLL.LicenseBLL.AddNewLicense(
