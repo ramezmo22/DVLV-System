@@ -1,12 +1,1 @@
-﻿root = true
 
-[*.cs]
-# إيقاف كافة تحذيرات التنسيق والأسلوب لملفات السي شارب
-dotnet_analyzer_diagnostic.category-Style.severity = none
-dotnet_analyzer_diagnostic.severity = none
-dotnet_diagnostic.IDE0005.severity = none
-dotnet_diagnostic.IDE0130.severity = none
-dotnet_diagnostic.IDE0055.severity = none
-dotnet_diagnostic.IDE0090.severity = none
-dotnet_diagnostic.IDE0058.severity = none
-dotnet_diagnostic.IDE0008.severity = none
